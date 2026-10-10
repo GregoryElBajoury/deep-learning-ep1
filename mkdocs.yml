@@ -1,0 +1,45 @@
+site_name: Projet Deep Learning - EP1
+site_description: Restitution et notes sur les 6 mini-projets Keras
+site_author: Gregory
+
+theme:
+  name: material
+  language: fr
+  palette:
+    # Mode clair
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Passer au mode sombre
+    # Mode sombre
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Passer au mode clair
+  features:
+    - navigation.tabs
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+plugins:
+  - search:
+      lang: fr
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+nav:
+  - Accueil: index.md
+  - 1. Intro DL & IA: 1-introduction-dl.md
+  - 2. Le Neurone: 2-neurone-perceptron.md
+  - 3. Réseaux Multicouches: 3-reseaux-multicouches.md
+  - 4. TP Keras: 4-exercices-pratiques.md
