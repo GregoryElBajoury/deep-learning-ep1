@@ -1,0 +1,11 @@
+/* Espacer les éléments de la barre de navigation principale */
+.md-tabs__list {
+    display: flex;
+    justify-content: flex-start; /* ou space-around pour les répartir sur toute la largeur */
+    gap: 2rem; /* Augmente l'espace entre chaque onglet */
+}
+
+.md-tabs__item {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}

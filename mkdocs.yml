@@ -22,6 +22,9 @@ theme:
         name: Passer au mode clair
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
     - navigation.top
     - search.suggest
     - search.highlight
@@ -49,3 +52,6 @@ nav:
     - TP3 - Titanic (Tabulaire): tps/tp3-titanic.md
     - TP4 - CNN (MNIST & Fashion): tps/tp4-cnn-mnist.md
     - TP5 - RNN & Texte (Victor Hugo): tps/tp5-rnn-hugo.md
+
+extra_css:
+  - stylesheets/extra.css

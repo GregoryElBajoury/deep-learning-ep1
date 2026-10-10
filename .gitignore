@@ -1,4 +1,18 @@
-.ipynb_checkpoints/
+# Environnement virtuel et checkpoints
 .venv/
+.ipynb_checkpoints/
+
+# Documentation MkDocs (générée localement)
+site/
+
+# Fichiers de cours / temporaires à la racine
 Introduction au Deep Learning.html
 tp-deep-learning-corrige.pdf
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# Fichiers système d'exploitation
+.DS_Store
+Thumbs.db
