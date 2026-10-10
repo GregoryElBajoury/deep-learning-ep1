@@ -39,7 +39,13 @@ markdown_extensions:
 
 nav:
   - Accueil: index.md
-  - 1. Intro DL & IA: 1-introduction-dl.md
-  - 2. Le Neurone: 2-neurone-perceptron.md
-  - 3. Réseaux Multicouches: 3-reseaux-multicouches.md
-  - 4. TP Keras: 4-exercices-pratiques.md
+  - Cours Théoriques:
+    - 1. Intro DL & IA: 1-introduction-dl.md
+    - 2. Le Neurone: 2-neurone-perceptron.md
+    - 3. Réseaux Multicouches: 3-reseaux-multicouches.md
+  - Travaux Pratiques (TPs):
+    - TP1 - Perceptron (Portes Logiques): tps/tp1-perceptron.md
+    - TP2 - Classification Iris (MLP): tps/tp2-iris-mlp.md
+    - TP3 - Titanic (Tabulaire): tps/tp3-titanic.md
+    - TP4 - CNN (MNIST & Fashion): tps/tp4-cnn-mnist.md
+    - TP5 - RNN & Texte (Victor Hugo): tps/tp5-rnn-hugo.md
