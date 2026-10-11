@@ -36,6 +36,14 @@ Une porte logique est une petite règle de décision : elle reçoit deux répons
     * **Machine Learning (ML)** : La machine apprend à partir de données au lieu de suivre des règles écrites à la main.
         * **Deep Learning (DL)** : Réseaux de neurones à plusieurs couches (*deep* = profond). Excellents sur les images, les sons et les textes.
 
+## 🎥 Vidéo : Introduction au Deep Learning (Machine Learnia)
+
+<div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px; margin: 20px 0;">
+  <iframe src="https://www.youtube.com/embed/XUFLq6dKQok" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+</div>
+
+
+
 ### Domaines d'application
 * **Voitures autonomes** : détection d'obstacles, lecture de panneaux, planification de trajectoire.
 * **Assistants vocaux** : Siri, Alexa et Google Assistant.
