@@ -90,8 +90,11 @@ print("Classes prédites (seuil 0.5)       :", (final_preds > 0.5).astype(int))
 
 Retrouve l'intégralité du code et des expérimentations dans les notebooks source :
 
-- 🔗 [Notebook - Porte AND (`01_perceptron_AND.ipynb`)](../../notebooks/01_perceptron_AND.ipynb)
-- 🔗 [Notebook - Porte NOR (`01_perceptron_NOR.ipynb`)](../../notebooks/01_perceptron_NOR.ipynb)
+Retrouve l'intégralité du code et des expérimentations dans les notebooks source sur GitHub :
+
+- 🔗 [Notebook - Porte AND (`01_perceptron_AND.ipynb`)](https://github.com/GregoryElBajoury/deep-learning-ep1/blob/main/notebooks/01_perceptron_AND.ipynb)
+
+- 🔗 [Notebook - Porte NOR (`01_perceptron_NOR.ipynb`)](https://github.com/GregoryElBajoury/deep-learning-ep1/blob/main/notebooks/01_perceptron_NOR.ipynb)
 
 !!! warning "Attention"
     Si ton neurone commence à refuser d'exécuter tes ordres ou à procrastiner à la place de la porte NOR, ne panique pas : c'est qu'il commence à développer une conscience artificielle... ou qu'il y a un bug dans ton `learning_rate`. Dans le doute, relance un café et un `git commit`. ☕🤖
