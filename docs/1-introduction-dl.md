@@ -1,67 +1,115 @@
 # 1. Introduction au Deep Learning et à l'IA
 
-## Définitions et hiérarchie
+> Un support de cours interactif : entraîne un neurone, déplace une fonction d'activation et compare des optimizers directement depuis la page.
 
-*   **Intelligence artificielle (IA)** : Toutes les techniques qui permettent à une machine de simuler l'intelligence humaine : résolution de problèmes, décision, compréhension du langage.
-*   **Machine Learning (ML)** : La machine apprend à partir de données au lieu de suivre des règles écrites à la main.
-*   **Deep Learning (DL)** : Réseaux de neurones à plusieurs couches (« deep » veut dire profond). Excellent sur les images, les sons, les textes.
-
-### Où on le croise
-*   **Voitures autonomes** : détection d'obstacles, lecture des panneaux, planification de trajectoire.
-*   **Assistants vocaux** : Siri, Alexa et Google Assistant comprennent la parole grâce au DL.
-*   **ChatGPT et les LLM** : modèles de langage fondés sur des réseaux profonds.
-*   **Reconnaissance faciale** : déverrouillage de téléphone, identification.
-*   **Recommandation** : Netflix, YouTube, Spotify personnalisent leurs suggestions.
-*   **Santé** : aide au diagnostic, analyse d'imagerie médicale.
-*   **Finance** : détection de fraude, trading algorithmique.
+!!! abstract "Objectifs d'apprentissage"
+    À la fin de ce chapitre, tu sauras :
+    * Situer l'IA, le Machine Learning et le Deep Learning les uns par rapport aux autres.
+    * Expliquer le fonctionnement d'un neurone artificiel et d'un réseau multicouche.
+    * Choisir une fonction d'activation, un optimizer et un learning rate adaptés.
+    * Entraîner un réseau avec TensorFlow/Keras en évitant toute fuite de données (*data leakage*).
 
 ---
 
-## 🎥 Vidéo : Introduction au Deep Learning (Machine Learnia)
+##  Un neurone qui apprend
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XUFLq6dKQok" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+### Les portes logiques
+Une porte logique est une petite règle de décision : elle reçoit deux réponses « oui » ou « non » (1 pour oui, 0 pour non) et rend une seule réponse. Le tableau indique la sortie pour chaque combinaison d'entrées ($x_1, x_2$).
+
+| Porte | La sortie vaut 1 quand… | (0, 0) | (0, 1) | (1, 0) | (1, 1) |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **AND** (ET) | les deux entrées valent 1 | 0 | 0 | 0 | 1 |
+| **OR** (OU) | au moins une entrée vaut 1 | 0 | 1 | 1 | 1 |
+| **NOR** (NON-OU) | aucune entrée ne vaut 1 (l'inverse de OR) | 1 | 0 | 0 | 0 |
+| **XOR** (OU exclusif) | une seule des deux entrées vaut 1 | 0 | 1 | 1 | 0 |
+
+!!! info "Le saviez-vous ?"
+    Avec deux entrées, il y a 16 règles possibles en tout. Sur ces 16, **14 se séparent par une droite** (un neurone seul les apprend, comme NAND ou XNOR). Seules XOR et XNOR demandent plusieurs neurones.
 
 ---
 
-## Machine Learning classique
+##  1. Introduction à l'IA, au Machine Learning et au Deep Learning
+
+### Hiérarchie des concepts
+
+* **Intelligence Artificielle (IA)** : Toutes les techniques qui permettent à une machine de simuler l'intelligence humaine (résolution de problèmes, décision, compréhension du langage).
+    * **Machine Learning (ML)** : La machine apprend à partir de données au lieu de suivre des règles écrites à la main.
+        * **Deep Learning (DL)** : Réseaux de neurones à plusieurs couches (*deep* = profond). Excellents sur les images, les sons et les textes.
+
+### Domaines d'application
+* **Voitures autonomes** : détection d'obstacles, lecture de panneaux, planification de trajectoire.
+* **Assistants vocaux** : Siri, Alexa et Google Assistant.
+* **LLM & Génération** : ChatGPT, modèles de langage profonds.
+* **Reconnaissance faciale** & **systèmes de recommandation** (Netflix, Spotify).
+* **Santé** : aide au diagnostic et imagerie médicale.
+
+---
+
+##  2. Machine Learning classique
 
 ### Principe
-Le ML cherche une fonction $f(x)$ qui approxime la relation entre les entrées $x$ (ex: la surface d'une maison) et les sorties $y$ (son prix), de sorte que $f(x) \approx y$ sur toutes les données.
+Le ML cherche une fonction $f(x)$ qui approxime la relation entre les entrées $x$ (ex: surface d'une maison) et les sorties $y$ (son prix), de sorte que $f(x) \approx y$.
 
 ### Exemple : la régression linéaire
-Le modèle le plus simple cherche la droite qui passe au plus près des points.
-$f(x) = a \cdot x + b$
-$a$ est la pente et $b$ l'ordonnée à l'origine. Le modèle trouve les $a$ et $b$ qui rapprochent la droite de tous les points.
+Le modèle cherche la droite qui passe au plus près des points :
+$$f(x) = a \cdot x + b$$
+Où $a$ est la pente et $b$ l'ordonnée à l'origine.
 
-### Fonction de coût
-Elle mesure l'erreur du modèle : plus elle est grande, plus le modèle est mauvais. Pour la régression, on utilise souvent l'erreur quadratique moyenne :
-$L = (1/n) \cdot \Sigma (y_{réel} - y_{prédit})^2$
-
-### Descente de gradient
-C'est l'algorithme qui minimise la fonction de coût en ajustant les paramètres petit à petit :
-1. Calculer l'erreur du modèle.
-2. Calculer dans quelle direction modifier les paramètres pour la réduire (le gradient).
-3. Faire un petit pas dans cette direction.
-4. Répéter jusqu'à convergence.
-`paramètre_nouveau = paramètre_ancien - learning_rate * gradient`
-
-### Autres modèles classiques
-*   **Arbres de décision** : des règles « si condition A alors X, sinon Y ». Faciles à interpréter, mais ils sur-apprennent.
-*   **SVM** : cherchent l'hyperplan qui sépare au mieux les classes. Très efficaces en classification binaire.
-*   **KNN** : classe un point selon la classe majoritaire de ses k plus proches voisins.
-*   **Random Forest** : un ensemble d'arbres qui votent pour donner une prédiction plus robuste.
+### Fonction de coût et Descente de gradient
+La fonction de coût mesure l'erreur du modèle (ex: l'Erreur Quadratique Moyenne - MSE). La descente de gradient minimise cette erreur pas à pas :
+$$\text{paramètre}_{\text{nouveau}} = \text{paramètre}_{\text{ancien}} - \eta \times \text{gradient}$$
+*(où $\eta$ est le learning rate).*
 
 ---
 
-## Histoire des réseaux de neurones
+##  3. Histoire des réseaux de neurones
 
-*   **1943 - McCulloch et Pitts** : Premier modèle mathématique de neurone artificiel.
-*   **1957 - Rosenblatt** : Invente le perceptron (premier algorithme capable d'apprendre automatiquement à partir de données sur des problèmes linéairement séparables).
-*   **1969 - Minsky et Papert** : Démontrent qu'un perceptron simple ne résout pas XOR. (Premier hiver de l'IA).
-*   **1986 - Rétropropagation** : Hinton popularise l'algorithme pour entraîner des réseaux multicouches (MLP). XOR est résolu.
-*   **1989-1998 - LeCun et les CNN** : Réseaux convolutifs pour les images (ex: LeNet-5).
-*   **Années 1990 - RNN** : Réseaux récurrents pour les séquences (texte, son).
-*   **2012 - AlexNet** : Un réseau de 8 couches gagne ImageNet. (GPU, Big Data, ReLU, Dropout).
-*   **2014-2015 - VGG, Inception, ResNet** : Réseaux toujours plus profonds.
-*   **2017-2018 - Transformers, BERT, GPT** : Mécanisme d'attention pour le NLP.
-*   **2020 et après - GPT-3, DALL-E, ChatGPT** : Modèles géants.
+* **1943** : McCulloch & Pitts (premier modèle mathématique).
+* **1957** : Rosenblatt invente le **Perceptron**.
+* **1969** : Minsky & Papert montrent les limites du perceptron (échec sur XOR) $\rightarrow$ Premier hiver de l'IA.
+* **1986** : Popularisation de la **Rétropropagation** (Hinton) $\rightarrow$ Résolution du XOR.
+* **1989-1998** : LeCun et les **CNN** (LeNet-5 pour les images).
+* **2012** : **AlexNet** révolutionne ImageNet (GPU, Big Data, ReLU).
+* **2017-2018** : Les **Transformers** (BERT, GPT) et le mécanisme d'attention.
+* **2020+** : Modèles géants (GPT-3, ChatGPT, multimodalité).
+
+---
+
+##  4. Le neurone artificiel et le perceptron
+
+Un neurone combine des entrées pondérées, ajoute un biais, puis applique une fonction d'activation non-linéaire :
+$$z = \sum (w_i x_i) + b \quad \text{et} \quad y = f(z)$$
+
+### Les fonctions d'activation majeures
+* **Sigmoïde** : Sortie entre $[0, 1]$. Idéale en classification binaire, mais souffre du *vanishing gradient*.
+* **Tanh** : Sortie entre $[-1, 1]$, centrée en zéro.
+* **ReLU** ($\max(0, x)$) : Le standard incontournable des couches cachées (CNN, MLP). Attention au syndrome du *Dying ReLU*.
+* **Softmax** : Utilisé en sortie pour transformer des scores bruts en probabilités multi-classes.
+
+---
+
+##  5. Réseaux de neurones multicouches (MLP)
+
+Un MLP est composé d'une couche d'entrée, de **couches cachées** (pleinement connectées) et d'une couche de sortie. L'apprentissage s'effectue en deux phases principales :
+1. **Forward propagation** : Calcul des prédictions de gauche à droite.
+2. **Backpropagation (Rétropropagation)** : Remontée de l'erreur de droite à gauche via la règle de la chaîne pour ajuster chaque poids et chaque biais.
+
+---
+
+##  6. Les optimizers et le Learning Rate
+
+* **SGD** : Simple mais lent et bruité.
+* **Momentum** : Ajoute de l'inertie pour passer les petits creux.
+* **RMSProp** : Adapte le pas de chaque paramètre individuellement.
+* **Adam** : Combine Momentum et RMSProp. C'est le **standard actuel** de l'industrie.
+
+!!! warning "Le rôle du Learning Rate ($\eta$)"
+    * **Trop petit** : L'entraînement piétine et stagne.
+    * **Trop grand** : La fonction de coût explose (*divergence* en valeurs `NaN`).
+    * **Bien réglé** : La descente est fluide et rapide.
+
+---
+
+## 💡 Travaux Pratiques associés
+
+Rends-toi dans la section **Travaux Pratiques** pour mettre les mains dans le cambouis sur 5 mini-projets concrets (du Perceptron sous NumPy aux CNN sur MNIST/Fashion-MNIST et génération de texte par RNN/LSTM).

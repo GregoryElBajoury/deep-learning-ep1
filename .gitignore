@@ -2,7 +2,7 @@
 .venv/
 .ipynb_checkpoints/
 
-# Documentation MkDocs (générée localement)
+# Documentation MkDocs &
 site/
 
 # Fichiers de cours / temporaires à la racine
