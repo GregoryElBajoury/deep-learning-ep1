@@ -12,7 +12,7 @@ Classifier des fleurs Iris en 3 catégories à partir de 4 mesures morphologique
 
 ## 2. Architecture du Modèle (4 - 8 - 3)
 * **Couche d'entrée** : 4 neurones (les 4 features).
-* **Couche cachée** : 8 neurones avec une fonction d'activation **ReLU** (40 paramètres)[cite: 110].
+* **Couche cachée** : 8 neurones avec une fonction d'activation **ReLU** (40 paramètres).
 * **Couche de sortie** : 3 neurones avec une activation **Softmax** pour prédire les probabilités des 3 classes (27 paramètres).
 
 ## 3. Compilation et Entraînement
