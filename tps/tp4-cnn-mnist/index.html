@@ -889,21 +889,39 @@
 
 <h1 id="tp4-reseaux-de-neurones-convolutifs-cnn-mnist-fashion-mnist">TP4 : Réseaux de Neurones Convolutifs (CNN) - MNIST &amp; Fashion-MNIST</h1>
 <h2 id="objectif">Objectif</h2>
-<p>Maîtriser les réseaux convolutifs pour la classification d'images en deux volets :
-1. <strong>MNIST</strong> : Reconnaissance de chiffres manuscrits (0 à 9)[cite: 93, 120].
-2. <strong>Fashion-MNIST</strong> : Classification d'articles de vestimentaires (10 catégories)[cite: 94, 124].</p>
+<p>Maîtriser les réseaux convolutifs pour la classification d'images en deux volets :</p>
+<ol>
+<li>
+<p><strong>MNIST</strong> : Reconnaissance de chiffres manuscrits (0 à 9).</p>
+</li>
+<li>
+<p><strong>Fashion-MNIST</strong> : Classification d'articles de vestimentaires (10 catégories).</p>
+</li>
+</ol>
 <hr />
 <h2 id="1-pretraitement-des-images">1. Prétraitement des images</h2>
 <ul>
-<li><strong>Normalisation des pixels</strong> : Division par 255.0 pour ramener les valeurs de <span class="arithmatex">\([0, 255]\)</span> à <span class="arithmatex">\([0, 1]\)</span>.</li>
-<li><strong>Ajout du canal</strong> : Passage d'une forme de <span class="arithmatex">\((N, 28, 28)\)</span> à <span class="arithmatex">\((N, 28, 28, 1)\)</span> pour expliciter le canal de nuances de gris.</li>
+<li>
+<p><strong>Normalisation des pixels</strong> : Division par 255.0 pour ramener les valeurs de <span class="arithmatex">\([0, 255]\)</span> à <span class="arithmatex">\([0, 1]\)</span>.</p>
+</li>
+<li>
+<p><strong>Ajout du canal</strong> : Passage d'une forme de <span class="arithmatex">\((N, 28, 28)\)</span> à <span class="arithmatex">\((N, 28, 28, 1)\)</span> pour expliciter le canal de nuances de gris.</p>
+</li>
 </ul>
 <h2 id="2-architecture-type-dun-cnn">2. Architecture type d'un CNN</h2>
 <ul>
-<li><strong>Conv2D</strong> : Extraction de motifs locaux (bords, textures).</li>
-<li><strong>MaxPooling2D</strong> : Réduction spatiale de la dimension des cartes de caractéristiques (pooling).</li>
-<li><strong>Flatten</strong> : Transformation de la matrice en vecteur plat.</li>
-<li><strong>Dense &amp; Dropout</strong> : Couche dense de classification et coupure aléatoire de connexions pour lutter contre l'overfitting.</li>
+<li>
+<p><strong>Conv2D</strong> : Extraction de motifs locaux (bords, textures).</p>
+</li>
+<li>
+<p><strong>MaxPooling2D</strong> : Réduction spatiale de la dimension des cartes de caractéristiques (pooling).</p>
+</li>
+<li>
+<p><strong>Flatten</strong> : Transformation de la matrice en vecteur plat.</p>
+</li>
+<li>
+<p><strong>Dense &amp; Dropout</strong> : Couche dense de classification et coupure aléatoire de connexions pour lutter contre l'overfitting.</p>
+</li>
 </ul>
 <h2 id="3-analyse-des-performances">3. Analyse des performances</h2>
 <ul>
