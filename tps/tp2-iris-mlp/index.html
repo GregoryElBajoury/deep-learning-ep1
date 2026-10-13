@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tp2-classification-des-fleurs-iris-avec-un-mlp" class="md-skip">
+        <a href="#tp2-pratique-implementation-et-entrainement-dun-mlp-avec-keras-dataset-iris" class="md-skip">
           Aller au contenu
         </a>
       
@@ -668,10 +668,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-etapes-de-preparation-des-donnees" class="md-nav__link">
+  <a href="#1-environnement-et-dependances" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Étapes de préparation des données
+        1. Environnement et Dépendances
       
     </span>
   </a>
@@ -679,10 +679,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-architecture-du-modele-4-8-3" class="md-nav__link">
+  <a href="#2-chargement-et-analyse-preliminaire-des-donnees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Architecture du Modèle (4 - 8 - 3)
+        2. Chargement et Analyse Préliminaire des Données
       
     </span>
   </a>
@@ -690,10 +690,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-compilation-et-entrainement" class="md-nav__link">
+  <a href="#3-pretraitement-et-ingenierie-des-donnees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Compilation et Entraînement
+        3. Prétraitement et Ingénierie des Données
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-architecture-du-modele-mlp-4-8-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Architecture du Modèle MLP (4 - 8 - 3)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-compilation-et-entrainement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Compilation et Entraînement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ressources-du-tp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ressources du TP
       
     </span>
   </a>
@@ -838,10 +871,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-etapes-de-preparation-des-donnees" class="md-nav__link">
+  <a href="#1-environnement-et-dependances" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Étapes de préparation des données
+        1. Environnement et Dépendances
       
     </span>
   </a>
@@ -849,10 +882,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-architecture-du-modele-4-8-3" class="md-nav__link">
+  <a href="#2-chargement-et-analyse-preliminaire-des-donnees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Architecture du Modèle (4 - 8 - 3)
+        2. Chargement et Analyse Préliminaire des Données
       
     </span>
   </a>
@@ -860,10 +893,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-compilation-et-entrainement" class="md-nav__link">
+  <a href="#3-pretraitement-et-ingenierie-des-donnees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Compilation et Entraînement
+        3. Prétraitement et Ingénierie des Données
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-architecture-du-modele-mlp-4-8-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Architecture du Modèle MLP (4 - 8 - 3)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-compilation-et-entrainement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Compilation et Entraînement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ressources-du-tp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ressources du TP
       
     </span>
   </a>
@@ -887,32 +953,61 @@
 
 
 
-<h1 id="tp2-classification-des-fleurs-iris-avec-un-mlp">TP2 : Classification des fleurs Iris avec un MLP</h1>
+<h1 id="tp2-pratique-implementation-et-entrainement-dun-mlp-avec-keras-dataset-iris">TP2 (Pratique) : Implémentation et Entraînement d'un MLP avec Keras (Dataset Iris)</h1>
 <h2 id="objectif">Objectif</h2>
-<p>Classifier des fleurs Iris en 3 catégories à partir de 4 mesures morphologiques (longueur/largeur des sépales et des pétales) en utilisant un réseau de neurones multicouches (MLP) avec <strong>Keras</strong>.</p>
+<p>Mettre en œuvre un réseau de neurones multicouches (MLP) sous Keras/TensorFlow pour classifier les fleurs Iris en 3 catégories, en suivant un pipeline rigoureux (installation des dépendances, préparation, construction, compilation et entraînement).</p>
 <hr />
-<h2 id="1-etapes-de-preparation-des-donnees">1. Étapes de préparation des données</h2>
-<ol>
-<li><strong>Séparation Train/Test</strong> : Effectuée <em>avant</em> tout calcul statistique pour éviter la fuite de données (<em>data leakage</em>). L'option <code>stratify=y</code> garantit de conserver les proportions de chaque classe.</li>
-<li><strong>Encodage des étiquettes (One-Hot Encoding)</strong> : Transformation des classes <span class="arithmatex">\((0, 1, 2)\)</span> en vecteurs binaires.</li>
-<li><strong>Normalisation (StandardScaler)</strong> : Ajusté uniquement sur le jeu d'entraînement (<code>fit_transform</code>) puis appliqué sur le test (<code>transform</code>).</li>
-</ol>
-<h2 id="2-architecture-du-modele-4-8-3">2. Architecture du Modèle (4 - 8 - 3)</h2>
+<h2 id="1-environnement-et-dependances">1. Environnement et Dépendances</h2>
 <ul>
-<li><strong>Couche d'entrée</strong> : 4 neurones (les 4 features).</li>
-<li><strong>Couche cachée</strong> : 8 neurones avec une fonction d'activation <strong>ReLU</strong> (40 paramètres).</li>
-<li><strong>Couche de sortie</strong> : 3 neurones avec une activation <strong>Softmax</strong> pour prédire les probabilités des 3 classes (27 paramètres).</li>
+<li><strong>Bibliothèques clés</strong> : <code>numpy</code>, <code>pandas</code>, <code>seaborn</code>, <code>matplotlib</code>, <code>networkx</code>, et <code>tensorflow</code> (avec Keras).</li>
+<li><strong>Reproductibilité</strong> : Fixation de la graine aléatoire via <code>tf.keras.utils.set_random_seed(42)</code> pour garantir des résultats identiques à chaque exécution.</li>
 </ul>
-<h2 id="3-compilation-et-entrainement">3. Compilation et Entraînement</h2>
+<h2 id="2-chargement-et-analyse-preliminaire-des-donnees">2. Chargement et Analyse Préliminaire des Données</h2>
+<ol>
+<li><strong>Chargement</strong> : Utilisation du dataset <code>load_iris()</code> de scikit-learn.</li>
+<li><strong>X (Features)</strong> : Matrice de dimensions <span class="arithmatex">\((150, 4)\)</span> correspondant aux 4 mesures morphologiques (longueur/largeur des sépales et pétales).</li>
+<li><strong>y (Target)</strong> : Vecteur de dimensions <span class="arithmatex">\((150,)\)</span> représentant les 3 classes cibles (<span class="arithmatex">\(0\)</span> : Setosa, <span class="arithmatex">\(1\)</span> : Versicolor, <span class="arithmatex">\(2\)</span> : Virginica).</li>
+<li><strong>Séparation Train/Test</strong> : </li>
+<li>Utilisation de <code>train_test_split</code> avec un ratio de 20 % pour le test (<code>test_size=0.2</code>).</li>
+<li>Application de l'option <code>stratify=y</code> pour conserver rigoureusement les proportions des 3 classes dans les ensembles d'entraînement et de test[cite: 12].</li>
+<li><strong>Dimensions obtenues</strong> : Train de <span class="arithmatex">\((120, 4)\)</span> et Test de <span class="arithmatex">\((30, 4)\)</span>.</li>
+</ol>
+<h2 id="3-pretraitement-et-ingenierie-des-donnees">3. Prétraitement et Ingénierie des Données</h2>
+<ol>
+<li><strong>One-Hot Encoding (Étiquettes)</strong> : </li>
+<li>Transformation des classes cibles entières en vecteurs binaires à l'aide de <code>OneHotEncoder</code> (ex: la classe <code>0</code> devient <code>[1., 0., 0.]</code>).</li>
+<li><strong>Standardisation (Features)</strong> : </li>
+<li>Utilisation de <code>StandardScaler</code> pour centrer et réduire les variables.</li>
+<li><strong>Règle d'or respectée</strong> : Le scaler est ajusté uniquement sur le jeu d'entraînement (<code>fit_transform</code>) puis appliqué tel quel sur le jeu de test (<code>transform</code>) pour éviter toute fuite de données (<em>data leakage</em>).</li>
+</ol>
+<h2 id="4-architecture-du-modele-mlp-4-8-3">4. Architecture du Modèle MLP (4 - 8 - 3)</h2>
+<p>Création d'un modèle séquentiel (<code>Sequential</code>) comportant 67 paramètres entraînables au total :</p>
 <ul>
-<li><strong>Optimizer</strong> : <code>adam</code>.</li>
-<li><strong>Loss</strong> : <code>categorical_crossentropy</code>.</li>
-<li>Évaluation finale et analyse de la matrice de confusion.</li>
+<li><strong>Couche d'entrée</strong> : Définie via <code>Input(shape=(4,))</code>.</li>
+<li><strong>Couche cachée (Dense)</strong> : 8 neurones avec la fonction d'activation <strong>ReLU</strong> (générant 40 paramètres).</li>
+<li><strong>Couche de sortie (Dense)</strong> : 3 neurones avec une activation <strong>Softmax</strong> pour convertir les scores en probabilités (27 paramètres).</li>
+<li><em>Visualisation graphique</em> : Un graphe de connexions complet (généré via <code>networkx</code>) illustre la structure en couches (4 <span class="arithmatex">\(\rightarrow\)</span> 8 <span class="arithmatex">\(\rightarrow\)</span> 3).</li>
+</ul>
+<h2 id="5-compilation-et-entrainement">5. Compilation et Entraînement</h2>
+<ul>
+<li><strong>Compilateur</strong> :</li>
+<li><strong>Optimizer</strong> : <code>adam</code></li>
+<li><strong>Loss</strong> : <code>categorical_crossentropy</code> (adaptée au One-Hot Encoding multi-classes)</li>
+<li><strong>Métrique</strong> : <code>accuracy</code></li>
+<li><strong>Entraînement (Fit)</strong> : </li>
+<li>Exécuté sur 100 époques.</li>
+<li>Suivi de la convergence de la précision (accuracy) et de la diminution de la fonction de perte (loss) à la fois sur l'entraînement et sur la validation.</li>
 </ul>
 <hr />
 <blockquote>
-<p><em>Code source du notebook et visualisations du graphe de neurones à venir.</em></p>
+<p><em>Modèle pleinement opérationnel avec une convergence observée vers une précision optimale sur le jeu d'évaluation.</em></p>
 </blockquote>
+<h2 id="ressources-du-tp">Ressources du TP</h2>
+<p>Retrouve l'intégralité du code et des expérimentations dans le notebook source sur GitHub :</p>
+<ul>
+<li>🔗 <a href="https://github.com/GregoryElBajoury/deep-learning-ep1/blob/main/notebooks/02_reseau_de_neurones_IRIS.ipynb">Notebook - Réseau de neurones IRIS (<code>02_reseau_de_neurones_IRIS.ipynb</code>)</a></li>
+</ul>
+<hr />
 
 
 

@@ -724,10 +724,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-pretraitement-des-images" class="md-nav__link">
+  <a href="#1-etapes-cles-du-pipeline-de-deep-learning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Prétraitement des images
+        1. Étapes clés du pipeline de Deep Learning
       
     </span>
   </a>
@@ -735,10 +735,66 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-architecture-type-dun-cnn" class="md-nav__link">
+  <a href="#2-volet-1-application-sur-le-dataset-mnist" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Architecture type d'un CNN
+        2. Volet 1 : Application sur le dataset MNIST
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Volet 1 : Application sur le dataset MNIST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-dimplementation-pour-mnist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code d'implémentation pour MNIST :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-volet-2-application-sur-le-dataset-fashion-mnist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Volet 2 : Application sur le dataset Fashion-MNIST
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Volet 2 : Application sur le dataset Fashion-MNIST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#observations-et-comparaison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observations et Comparaison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ressources-du-tp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ressources du TP
       
     </span>
   </a>
@@ -746,10 +802,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-analyse-des-performances" class="md-nav__link">
+  <a href="#ressources-du-tp_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Analyse des performances
+        Ressources du TP
       
     </span>
   </a>
@@ -838,10 +894,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-pretraitement-des-images" class="md-nav__link">
+  <a href="#1-etapes-cles-du-pipeline-de-deep-learning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Prétraitement des images
+        1. Étapes clés du pipeline de Deep Learning
       
     </span>
   </a>
@@ -849,10 +905,66 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-architecture-type-dun-cnn" class="md-nav__link">
+  <a href="#2-volet-1-application-sur-le-dataset-mnist" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Architecture type d'un CNN
+        2. Volet 1 : Application sur le dataset MNIST
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Volet 1 : Application sur le dataset MNIST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-dimplementation-pour-mnist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code d'implémentation pour MNIST :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-volet-2-application-sur-le-dataset-fashion-mnist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Volet 2 : Application sur le dataset Fashion-MNIST
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Volet 2 : Application sur le dataset Fashion-MNIST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#observations-et-comparaison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observations et Comparaison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ressources-du-tp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ressources du TP
       
     </span>
   </a>
@@ -860,10 +972,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-analyse-des-performances" class="md-nav__link">
+  <a href="#ressources-du-tp_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Analyse des performances
+        Ressources du TP
       
     </span>
   </a>
@@ -889,48 +1001,98 @@
 
 <h1 id="tp4-reseaux-de-neurones-convolutifs-cnn-mnist-fashion-mnist">TP4 : Réseaux de Neurones Convolutifs (CNN) - MNIST &amp; Fashion-MNIST</h1>
 <h2 id="objectif">Objectif</h2>
-<p>Maîtriser les réseaux convolutifs pour la classification d'images en deux volets :</p>
+<p>Ce TP a pour but de te faire maîtriser les Réseaux de Neurones Convolutifs (CNN) pour la classification d'images à travers deux jeux de données classiques :</p>
 <ol>
-<li>
-<p><strong>MNIST</strong> : Reconnaissance de chiffres manuscrits (0 à 9).</p>
-</li>
-<li>
-<p><strong>Fashion-MNIST</strong> : Classification d'articles de vestimentaires (10 catégories).</p>
-</li>
+<li><strong>MNIST</strong> : Reconnaissance de chiffres manuscrits (<span class="arithmatex">\(0\)</span> à <span class="arithmatex">\(9\)</span>).</li>
+<li><strong>Fashion-MNIST</strong> : Classification d'articles vestimentaires (<span class="arithmatex">\(10\)</span> catégories).</li>
 </ol>
 <hr />
-<h2 id="1-pretraitement-des-images">1. Prétraitement des images</h2>
+<h2 id="1-etapes-cles-du-pipeline-de-deep-learning">1. Étapes clés du pipeline de Deep Learning</h2>
 <ul>
+<li><strong>Prétraitement des images</strong> :</li>
+<li>Normalisation des pixels (division par <span class="arithmatex">\(255.0\)</span> pour ramener les valeurs de <span class="arithmatex">\([0, 255]\)</span> à <span class="arithmatex">\([0, 1]\)</span>).</li>
 <li>
-<p><strong>Normalisation des pixels</strong> : Division par 255.0 pour ramener les valeurs de <span class="arithmatex">\([0, 255]\)</span> à <span class="arithmatex">\([0, 1]\)</span>.</p>
+<p>Redimensionnement/Ajout de dimension du canal (passage de <span class="arithmatex">\((N, 28, 28)\)</span> à <span class="arithmatex">\((N, 28, 28, 1)\)</span> pour la couche convolutionnelle).</p>
 </li>
 <li>
-<p><strong>Ajout du canal</strong> : Passage d'une forme de <span class="arithmatex">\((N, 28, 28)\)</span> à <span class="arithmatex">\((N, 28, 28, 1)\)</span> pour expliciter le canal de nuances de gris.</p>
+<p><strong>Architecture d'un CNN</strong> :</p>
 </li>
-</ul>
-<h2 id="2-architecture-type-dun-cnn">2. Architecture type d'un CNN</h2>
-<ul>
+<li><code>Conv2D</code> : Extraction de caractéristiques spatiales (bords, textures).</li>
+<li><code>MaxPooling2D</code> : Réduction de la dimension spatiale (downsampling).</li>
+<li><code>Flatten</code> : Aplatissement des cartes de caractéristiques en un vecteur 1D.</li>
+<li><code>Dense</code> : Couches de classification entièrement connectées.</li>
 <li>
-<p><strong>Conv2D</strong> : Extraction de motifs locaux (bords, textures).</p>
-</li>
-<li>
-<p><strong>MaxPooling2D</strong> : Réduction spatiale de la dimension des cartes de caractéristiques (pooling).</p>
+<p><code>Dropout</code> : Régularisation pour éviter le surapprentissage (overfitting).</p>
 </li>
 <li>
-<p><strong>Flatten</strong> : Transformation de la matrice en vecteur plat.</p>
+<p><strong>Évaluation</strong> :</p>
 </li>
-<li>
-<p><strong>Dense &amp; Dropout</strong> : Couche dense de classification et coupure aléatoire de connexions pour lutter contre l'overfitting.</p>
-</li>
-</ul>
-<h2 id="3-analyse-des-performances">3. Analyse des performances</h2>
-<ul>
-<li>Évaluation de la précision sur le jeu de test et identification des classes les plus fréquemment confondues via la matrice de confusion.</li>
+<li>Calcul de la précision (<code>accuracy</code>) et de la perte (<code>loss</code>).</li>
+<li>Analyse par matrice de confusion et rapport de classification (<code>classification_report</code>).</li>
 </ul>
 <hr />
-<blockquote>
-<p><em>Code source des notebooks et explications détaillées des couches à venir.</em></p>
-</blockquote>
+<h2 id="2-volet-1-application-sur-le-dataset-mnist">2. Volet 1 : Application sur le dataset MNIST</h2>
+<p>Le dataset MNIST contient des images de chiffres de <span class="arithmatex">\(0\)</span> à <span class="arithmatex">\(9\)</span> en nuances de gris (<span class="arithmatex">\(28 \times 28\)</span> pixels). </p>
+<h3 id="code-dimplementation-pour-mnist">Code d'implémentation pour MNIST :</h3>
+<div class="highlight"><pre><span></span><code>import numpy as np
+import tensorflow as tf
+from tensorflow.keras import datasets, layers, models, Input
+from sklearn.metrics import confusion_matrix, classification_report
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Chargement des données MNIST
+(X_train_mnist, y_train_mnist), (X_test_mnist, y_test_mnist) = datasets.mnist.load_data()
+
+# Prétraitement
+X_train_mnist = X_train_mnist.astype("float32") / 255.0
+X_test_mnist = X_test_mnist.astype("float32") / 255.0
+
+# Ajout du canal
+X_train_mnist = np.expand_dims(X_train_mnist, -1)
+X_test_mnist = np.expand_dims(X_test_mnist, -1)
+
+# Construction du modèle CNN pour MNIST
+model_mnist = models.Sequential([
+    Input(shape=(28, 28, 1)),
+    layers.Conv2D(32, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+    layers.Flatten(),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(10, activation='softmax')
+])
+
+model_mnist.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+# Entraînement
+history_mnist = model_mnist.fit(X_train_mnist, y_train_mnist, epochs=5, batch_size=64, validation_split=0.1)
+
+# Évaluation
+test_loss, test_acc = model_mnist.evaluate(X_test_mnist, y_test_mnist, verbose=2)
+print(f"Précision MNIST sur le test : {test_acc * 100:.2f}%")
+</code></pre></div>
+<hr />
+<h2 id="3-volet-2-application-sur-le-dataset-fashion-mnist">3. Volet 2 : Application sur le dataset Fashion-MNIST</h2>
+<p>Fashion-MNIST remplace MNIST pour complexifier la tâche avec 10 catégories de vêtements (T-shirt, pantalon, pull, etc.). Les pixels partagent la même dimension (<span class="arithmatex">\(28 \times 28 \times 1\)</span>), mais les formes texturées y sont plus complexes.</p>
+<h3 id="observations-et-comparaison">Observations et Comparaison</h3>
+<ul>
+<li>Les performances sur MNIST atteignent rapidement des sommets (souvent <span class="arithmatex">\(&gt; 98\%\)</span> ou <span class="arithmatex">\(99\%\)</span> de précision dès quelques époques).</li>
+<li>Sur Fashion-MNIST, la précision se stabilise généralement autour de <span class="arithmatex">\(90\% - 92\%\)</span> en raison de la complexité visuelle accrue et des ressemblances entre certaines classes (ex: chemises et t-shirts).</li>
+</ul>
+<hr />
+<h2 id="ressources-du-tp">Ressources du TP</h2>
+<p>Retrouve l'intégralité du code et des expérimentations dans le notebook source sur GitHub :</p>
+<h2 id="ressources-du-tp_1">Ressources du TP</h2>
+<p>Retrouve l'intégralité du code et des expérimentations dans les notebooks sources sur GitHub :</p>
+<ul>
+<li>🔗 <a href="https://github.com/GregoryElBajoury/deep-learning-ep1/blob/main/notebooks/03_apprentissage_CNN_dataset_MNIST.ipynb">Notebook - Réseau de neurones CNN - Dataset MNIST (<code>03_apprentissage_CNN_dataset_MNIST.ipynb</code>)</a></li>
+<li>🔗 <a href="https://github.com/GregoryElBajoury/deep-learning-ep1/blob/main/notebooks/04_apprentissage_CNN_dataset_Fashion_MNIST.ipynb">Notebook - Réseau de neurones CNN - Dataset Fashion-MNIST (<code>04_apprentissage_CNN_dataset_Fashion_MNIST.ipynb</code>)</a></li>
+</ul>
+<hr />
 
 
 
