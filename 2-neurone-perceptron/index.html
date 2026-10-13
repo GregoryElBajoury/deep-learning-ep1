@@ -506,6 +506,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#un-exemple-concret-a-la-main-la-porte-nor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Un exemple concret à la main : La porte NOR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#les-fonctions-dactivation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -568,6 +579,34 @@
     
   
     3. Réseaux Multicouches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-architectures-specialisees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Architectures Spécialisées (CNN & RNN)
   
 
     
@@ -838,6 +877,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#un-exemple-concret-a-la-main-la-porte-nor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Un exemple concret à la main : La porte NOR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#les-fonctions-dactivation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -895,21 +945,83 @@
 
 <h1 id="2-le-neurone-artificiel-et-le-perceptron">2. Le neurone artificiel et le perceptron</h1>
 <h2 id="anatomie-dun-neurone">Anatomie d'un neurone</h2>
-<p>Un neurone artificiel est composé de plusieurs éléments :</p>
+<p>Un neurone artificiel est inspiré du neurone biologique et constitue la brique de base de tout réseau de neurones. Il est composé de :</p>
 <ul>
-<li><strong>Entrées ($x_1...x_n$)</strong> : les données brutes ou les signaux venus d'autres neurones.</li>
-<li><strong>Poids ($w_1...w_n$)</strong> : l'importance de chaque entrée. Un poids élevé donne beaucoup d'influence.</li>
-<li><strong>Biais ($b$)</strong> : une constante qui décale l'activation, comme un seuil personnalisé.</li>
+<li><strong>Entrées (<span class="arithmatex">\(x_1, x_2, \dots, x_n\)</span>)</strong> : les données brutes ou les signaux provenant de la couche précédente.</li>
+<li><strong>Poids (<span class="arithmatex">\(w_1, w_2, \dots, w_n\)</span>)</strong> : les coefficients synaptiques qui pondèrent l'importance de chaque entrée. Un poids fort amplifie le signal, un poids faible le minore.</li>
+<li><strong>Biais (<span class="arithmatex">\(b\)</span>)</strong> : un paramètre additionnel qui permet de décaler la fonction d'activation, agissant comme un seuil de déclenchement personnalisé.</li>
 </ul>
-<p>Le calcul s'effectue en deux étapes :
-1.  <strong>Somme pondérée $z$</strong> : $z = w_1x_1 + w_2x_2 + ... + w_nx_n + b = \Sigma(w_ix_i) + b$
-2.  <strong>Fonction d'activation $f$</strong> : donne la sortie $y = f(z)$</p>
+<p>Le calcul s'effectue en deux étapes successives :</p>
+<ol>
+<li><strong>La somme pondérée (<span class="arithmatex">\(z\)</span>)</strong> : </li>
+</ol>
+<p>$<span class="arithmatex">\(z = w_1x_1 + w_2x_2 + \dots + w_nx_n + b = \sum_{i=1}^{n}(w_i x_i) + b\)</span>$</p>
+<ol>
+<li><strong>La fonction d'activation (<span class="arithmatex">\(f\)</span>)</strong> : elle introduit de la non-linéarité pour produire la sortie finale :</li>
+</ol>
+<p>$<span class="arithmatex">\(y = f(z)\)</span>$</p>
 <h2 id="video-le-perceptron-machine-learnia">🎥 Vidéo : Le Perceptron (Machine Learnia)</h2>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VlMm4VZ6lk4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <hr />
+<h2 id="un-exemple-concret-a-la-main-la-porte-nor">Un exemple concret à la main : La porte NOR</h2>
+<p>Pour bien comprendre comment agissent les poids et le biais, prenons un exemple simple : une alarme qui reste calme (sortie <span class="arithmatex">\(1\)</span>) seulement si <strong>aucun</strong> des deux capteurs ne détecte de présence (<span class="arithmatex">\(x_1\)</span> et <span class="arithmatex">\(x_2\)</span> valent <span class="arithmatex">\(1\)</span> lorsqu'ils sont activés). C'est la table de vérité de la porte logique <strong>NOR</strong> (NON-OU).</p>
+<p>Considérons un neurone dont les paramètres ont déjà été réglés ainsi :</p>
+<ul>
+<li><span class="arithmatex">\(w_1 = -2\)</span></li>
+<li><span class="arithmatex">\(w_2 = -2\)</span></li>
+<li><span class="arithmatex">\(b = +1\)</span></li>
+</ul>
+<p>Le neurone calcule <span class="arithmatex">\(z = -2x_1 - 2x_2 + 1\)</span> et renvoie <span class="arithmatex">\(1\)</span> si <span class="arithmatex">\(z &gt; 0\)</span>, sinon <span class="arithmatex">\(0\)</span>. Suivons le calcul pour chaque combinaison :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="arithmatex">\(x_1\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(x_2\)</span></th>
+<th style="text-align: left;">Calcul détaillé (<span class="arithmatex">\(z = -2x_1 - 2x_2 + 1\)</span>)</th>
+<th style="text-align: center;">Sortie du neurone (<span class="arithmatex">\(z &gt; 0\)</span>)</th>
+<th style="text-align: center;">Sortie attendue (NOR)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(z = (-2\times0) + (-2\times0) + 1 = +1\)</span> (positif)</td>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;"><strong>1</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(z = (-2\times0) + (-2\times1) + 1 = -1\)</span> (négatif)</td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(z = (-2\times1) + (-2\times0) + 1 = -1\)</span> (négatif)</td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(z = (-2\times1) + (-2\times1) + 1 = -3\)</span> (négatif)</td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ce qu'il faut retenir de cette logique :</strong></p>
+<ul>
+<li>Les <strong>poids négatifs (<span class="arithmatex">\(-2\)</span>)</strong> font que chaque entrée active (<span class="arithmatex">\(1\)</span>) tire le score global vers le bas.</li>
+<li>Le <strong>biais positif (<span class="arithmatex">\(+1\)</span>)</strong> offre un point de départ favorable : en l'absence de signal extérieur, le neurone choisit par défaut de s'activer.</li>
+</ul>
+<hr />
 <h2 id="les-fonctions-dactivation">Les fonctions d'activation</h2>
-<p>Elles introduisent la <strong>non-linéarité</strong>, ce qui permet au réseau de modéliser des relations complexes.</p>
+<p>Elles sont indispensables car elles permettent au réseau de modéliser des relations non-linéaires complexes.</p>
 <table>
 <thead>
 <tr>
@@ -921,66 +1033,74 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Sigmoïde</strong><br>$1/(1+e^{-x})$</td>
-<td style="text-align: left;">$[0, 1]$</td>
-<td style="text-align: left;">Vanishing gradient, non centrée en 0, exponentielle coûteuse</td>
-<td style="text-align: left;">Sortie d'une classification binaire (probabilité de la classe positive)</td>
+<td style="text-align: left;"><strong>Sigmoïde</strong><br><span class="arithmatex">\(\frac{1}{1+e^{-x}}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\([0, 1]\)</span></td>
+<td style="text-align: left;"><em>Vanishing gradient</em> (gradient saturé aux extrêmes), non centrée en 0</td>
+<td style="text-align: left;">Sortie d'une classification binaire (probabilité)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Tanh</strong><br>$(e^x-e^{-x})/(e^x+e^{-x})$</td>
-<td style="text-align: left;">$[-1,1]$</td>
-<td style="text-align: left;">Vanishing gradient aux extrêmes</td>
-<td style="text-align: left;">Anciennes couches cachées, certains RNN et LSTM</td>
+<td style="text-align: left;"><strong>Tanh</strong><br><span class="arithmatex">\(\frac{e^x-e^{-x}}{e^x+e^{-x}}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\([-1, 1]\)</span></td>
+<td style="text-align: left;"><em>Vanishing gradient</em> aux extrêmes</td>
+<td style="text-align: left;">Anciennes couches cachées, RNN / LSTM</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>ReLU</strong><br>$\max(0,x)$</td>
-<td style="text-align: left;">$[0,+\infty[$</td>
-<td style="text-align: left;">Dying ReLU: un neurone qui ne reçoit que des valeurs négatives reste bloqué à 0</td>
-<td style="text-align: left;">Couches cachées (standard actuel) des CNN et des MLP</td>
+<td style="text-align: left;"><strong>ReLU</strong><br><span class="arithmatex">\(\max(0,x)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\([0,+\infty[\)</span></td>
+<td style="text-align: left;"><em>Dying ReLU</em> : un neurone recevant toujours des valeurs négatives reste bloqué à 0</td>
+<td style="text-align: left;">Couches cachées standard (CNN, MLP)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Softmax</strong><br>$e^x / \Sigma e^x$</td>
-<td style="text-align: left;">$[0, 1]$,<br>somme = 1</td>
+<td style="text-align: left;"><strong>Softmax</strong><br><span class="arithmatex">\(\frac{e^{x_i}}{\sum e^{x_j}}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\([0, 1]\)</span>, somme = 1</td>
 <td style="text-align: left;">Sensible aux valeurs extrêmes (overflow numérique)</td>
-<td style="text-align: left;">Sortie d'une classification multi-classes, attention des Transformers</td>
+<td style="text-align: left;">Couche de sortie en classification multi-classes</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition info">
 <p class="admonition-title">Variantes de ReLU</p>
-<ul>
-<li><strong>Leaky ReLU</strong> $\max(0.01x, x)$ : garde un petit gradient pour $x&lt;0$.</li>
-<li><strong>PReLU</strong> : apprend ce coefficient.</li>
-<li><strong>ELU</strong> : lisse pour les valeurs négatives.</li>
-<li><strong>GELU</strong> : sert dans les Transformers (GPT, BERT).</li>
-</ul>
 </div>
+<ul>
+<li><strong>Leaky ReLU</strong> (<span class="arithmatex">\(\max(0.01x, x)\)</span>) : conserve un très faible gradient pour <span class="arithmatex">\(x &lt; 0\)</span> afin d'éviter la mort des neurones.</li>
+<li><strong>PReLU</strong> : apprend dynamiquement ce coefficient de fuite.</li>
+<li><strong>ELU</strong> : offre une courbe plus lisse pour les valeurs négatives.</li>
+<li><strong>GELU</strong> : utilisé dans les architectures modernes de type Transformers (GPT, BERT).</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Softmax : des scores aux probabilités</p>
-<p>Softmax transforme des scores quelconques en probabilités qui somment à 1, et accentue les écarts : le score le plus haut prend une part bien plus grande.
-Exemple : Pour les scores <code>[2.0, 1.0, 0.5]</code>, softmax donne <code>[0.63, 0.23, 0.14]</code>.</p>
+<p>Softmax transforme des scores bruts (logits) en un vecteur de probabilités dont la somme est égale à 1, en accentuant les écarts. 
+<em>Exemple :</em> Pour les scores <code>[2.0, 1.0, 0.5]</code>, softmax donne approximativement <code>[0.63, 0.23, 0.14]</code>.</p>
 </div>
 <hr />
 <h2 id="le-perceptron-simple">Le perceptron simple</h2>
-<p>C'est le plus petit réseau possible : un seul neurone, avec $n$ entrées, $n$ poids, un biais, une fonction d'activation (en général une fonction échelon ou la sigmoïde) et une sortie.</p>
-<p>On calcule $z = \Sigma(w_ix_i) + w_0$, puis $y = f(z)$; si $y$ dépasse un seuil, c'est la classe 1, sinon la classe 0.</p>
+<p>Inventé par Frank Rosenblatt en 1957, c'est le modèle historique de neurone formel. Il combine un vecteur d'entrées, des poids, un biais et une fonction d'activation à seuil.</p>
 <h3 id="regle-dapprentissage">Règle d'apprentissage</h3>
-<p>Pour chaque exemple $(x, y_{vrai})$ :</p>
+<p>Pour chaque exemple d'entraînement <span class="arithmatex">\((x, y_{\text{vrai}})\)</span> :</p>
 <ol>
-<li>$y_{predit} = f(\Sigma w_ix_i + w_0)$</li>
-<li>erreur $e = y_{vrai} - y_{predit}$</li>
-<li>$w_i \leftarrow w_i + \eta \cdot e \cdot x_i$</li>
-<li>$w_0 \leftarrow w_0 + \eta \cdot e$</li>
+<li>Calcul de la prédiction : </li>
 </ol>
-<p><em>$\eta$ (êta) est le learning rate.</em></p>
+<p><span class="arithmatex">\(y_{\text{pred}} = f\left(\sum w_i x_i + w_0\right)\)</span></p>
+<ol>
+<li>Calcul de l'erreur commise :</li>
+</ol>
+<p><span class="arithmatex">\(e = y_{\text{vrai}} - y_{\text{pred}}\)</span></p>
+<ol>
+<li>Mise à jour des poids : </li>
+</ol>
+<p><span class="arithmatex">\(w_i \leftarrow w_i + \eta \cdot e \cdot x_i\)</span></p>
+<ol>
+<li>Mise à jour du biais :</li>
+</ol>
+<p><span class="arithmatex">\(w_0 \leftarrow w_0 + \eta \cdot e\)</span></p>
+<p><em>(Où <span class="arithmatex">\(\eta\)</span> représente le </em><em>learning rate</em><em> ou taux d'apprentissage).</em></p>
 <div class="admonition warning">
-<p class="admonition-title">Limites du perceptron simple</p>
+<p class="admonition-title">Limites historiques du perceptron simple</p>
 <ul>
-<li>Il ne résout que les problèmes <strong>linéairement séparables</strong>.</li>
-<li>Il ne peut pas apprendre la porte logique <strong>XOR</strong>.</li>
-<li>Sa puissance de représentation est limitée.</li>
+<li>Il ne peut résoudre que des problèmes <strong>linéairement séparables</strong>.</li>
+<li>Il échoue à apprendre des fonctions logiques basiques non-linéaires comme le <strong>XOR</strong> (car aucune droite unique ne peut séparer les classes du XOR).</li>
 </ul>
-<p>👉 <strong>La solution :</strong> empiler plusieurs couches de neurones (MLP).</p>
+<p>👉 <strong>La solution :</strong> Multiplier les couches de neurones pour former un Réseau Multicouches (MLP), capable de modéliser des frontières de décision complexes.</p>
 </div>
 
 
@@ -1041,6 +1161,8 @@ Exemple : Pour les scores <code>[2.0, 1.0, 0.5]</code>, softmax donne <code>[0.6
     
     
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

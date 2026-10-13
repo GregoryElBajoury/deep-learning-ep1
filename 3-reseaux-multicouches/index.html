@@ -16,7 +16,7 @@
         <link rel="prev" href="../2-neurone-perceptron/">
       
       
-        <link rel="next" href="../tps/tp1-perceptron/">
+        <link rel="next" href="../4-architectures-specialisees/">
       
       
         
@@ -598,12 +598,12 @@
   <a href="#le-learning-rate-eta" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Le Learning Rate ($\eta$)
+        Le Learning Rate (\(\eta\))
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Le Learning Rate ($\eta$)">
+    <nav class="md-nav" aria-label="Le Learning Rate (\(\eta\))">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -626,6 +626,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-architectures-specialisees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Architectures Spécialisées (CNN & RNN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -952,12 +980,12 @@
   <a href="#le-learning-rate-eta" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Le Learning Rate ($\eta$)
+        Le Learning Rate (\(\eta\))
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Le Learning Rate ($\eta$)">
+    <nav class="md-nav" aria-label="Le Learning Rate (\(\eta\))">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -998,7 +1026,7 @@
 <ul>
 <li><strong>Couche d'entrée</strong> : reçoit les données brutes. Autant de neurones que de features, aucun calcul.</li>
 <li><strong>Couches cachées</strong> : transforment les données et extraient des features. Il peut y en avoir plusieurs (d'où « deep »). Chaque neurone est relié à tous ceux de la couche précédente (<em>fully connected</em>).</li>
-<li><strong>Couche de sortie</strong> : produit la prédiction. 1 neurone pour une régression ou une classification binaire, $k$ neurones pour $k$ classes.</li>
+<li><strong>Couche de sortie</strong> : produit la prédiction. 1 neurone pour une régression ou une classification binaire, <span class="arithmatex">\(k\)</span> neurones pour <span class="arithmatex">\(k\)</span> classes.</li>
 </ul>
 <h2 id="video-reseau-de-neurones-profond-machine-learnia">🎥 Vidéo : Réseau de neurones profond (Machine Learnia)</h2>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4NRLysodIwY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -1006,18 +1034,24 @@
 <hr />
 <h2 id="propagation-et-retropropagation">Propagation et Rétropropagation</h2>
 <h3 id="forward-propagation">Forward propagation</h3>
-<p>Calculer la sortie du réseau à partir des entrées, couche après couche :
-$z^{[l]} = W^{[l]} \cdot a^{[l-1]} + b^{[l]}$
-puis $a^{[l]} = f(z^{[l]})$.
-La sortie de la dernière couche est la prédiction $\hat{y}$.</p>
+<p>Calculer la sortie du réseau à partir des entrées, couche après couche :</p>
+<p><span class="arithmatex">\(z^{[l]} = W^{[l]} \cdot a^{[l-1]} + b^{[l]}\)</span>
+puis <span class="arithmatex">\(a^{[l]} = f(z^{[l]})\)</span>.</p>
+<p>La sortie de la dernière couche est la prédiction <span class="arithmatex">\(\hat{y}\)</span>.</p>
 <h3 id="retropropagation-backpropagation">Rétropropagation (Backpropagation)</h3>
-<p>Elle calcule le gradient de la perte par rapport à chaque poids et chaque biais :
-1. Calculer l'erreur en sortie, par exemple $\delta_{sortie} = (\hat{y} - y) \cdot f'(z_{sortie})$
-2. La propager vers les couches précédentes avec la règle de la chaîne (chain rule).
-3. Pour chaque couche, calculer la contribution de chaque poids à l'erreur finale.</p>
+<p>Elle calcule le gradient de la perte par rapport à chaque poids et chaque biais :</p>
+<ol>
+<li>
+<p>Calculer l'erreur en sortie, par exemple <span class="arithmatex">\(\delta_{sortie} = (\hat{y} - y) \cdot f'(z_{sortie})\)</span></p>
+</li>
+<li>
+<p>La propager vers les couches précédentes avec la règle de la chaîne (chain rule).</p>
+</li>
+<li>Pour chaque couche, calculer la contribution de chaque poids à l'erreur finale.</li>
+</ol>
 <h3 id="mise-a-jour-des-parametres">Mise à jour des paramètres</h3>
-<p>$W^{[l]} \leftarrow W^{[l]} - \eta \cdot \partial L/\partial W^{[l]}$
-$b^{[l]} \leftarrow b^{[l]} - \eta \cdot \partial L/\partial b^{[l]}$</p>
+<p><span class="arithmatex">\(W^{[l]} \leftarrow W^{[l]} - \eta \cdot \partial L/\partial W^{[l]}\)</span></p>
+<p><span class="arithmatex">\(b^{[l]} \leftarrow b^{[l]} - \eta \cdot \partial L/\partial b^{[l]}\)</span></p>
 <hr />
 <h2 id="les-optimizers">Les Optimizers</h2>
 <p>Un optimizer ajuste les poids et les biais pour minimiser la fonction de coût.</p>
@@ -1065,18 +1099,18 @@ $b^{[l]} \leftarrow b^{[l]} - \eta \cdot \partial L/\partial b^{[l]}$</p>
 <div class="admonition tip">
 <p class="admonition-title">Comment choisir ?</p>
 <ul>
-<li><strong>Pour débuter / en production</strong> : Adam avec ses paramètres par défaut ($\eta=0.001$).</li>
+<li><strong>Pour débuter / en production</strong> : Adam avec ses paramètres par défaut (<span class="arithmatex">\(\eta=0.001\)</span>).</li>
 <li><strong>En cas de sur-apprentissage</strong> : essaie SGD avec Momentum, ou AdamW.</li>
 <li><strong>Pour un RNN ou un LSTM</strong> : RMSProp ou Adam.</li>
 </ul>
 </div>
 <hr />
-<h2 id="le-learning-rate-eta">Le Learning Rate ($\eta$)</h2>
+<h2 id="le-learning-rate-eta">Le Learning Rate (<span class="arithmatex">\(\eta\)</span>)</h2>
 <p>Le learning rate contrôle la taille du pas effectué lors de la mise à jour des poids. C'est le paramètre le plus important à régler.</p>
 <ul>
-<li><strong>$\eta$ petit (ex: 0.0001)</strong> : descente lente mais stable.</li>
-<li><strong>$\eta$ grand (ex: 0.1)</strong> : descente rapide au début, mais risque de diverger (la loss explose).</li>
-<li><strong>Bon $\eta$ (0.001 à 0.01)</strong> : équilibre entre rapidité et stabilité.</li>
+<li><strong><span class="arithmatex">\(\eta\)</span> petit (ex: 0.0001)</strong> : descente lente mais stable.</li>
+<li><strong><span class="arithmatex">\(\eta\)</span> grand (ex: 0.1)</strong> : descente rapide au début, mais risque de diverger (la loss explose).</li>
+<li><strong>Bon <span class="arithmatex">\(\eta\)</span> (0.001 à 0.01)</strong> : équilibre entre rapidité et stabilité.</li>
 </ul>
 <h3 id="symptomes-et-solutions">Symptômes et solutions</h3>
 <table>
@@ -1090,22 +1124,22 @@ $b^{[l]} \leftarrow b^{[l]} - \eta \cdot \partial L/\partial b^{[l]}$</p>
 <tbody>
 <tr>
 <td style="text-align: left;">La loss diminue très lentement</td>
-<td style="text-align: left;">$\eta$ trop petit</td>
-<td style="text-align: left;">Augmenter $\eta$ ($\times2$ ou $\times10$)</td>
+<td style="text-align: left;"><span class="arithmatex">\(\eta\)</span> trop petit</td>
+<td style="text-align: left;">Augmenter <span class="arithmatex">\(\eta\)</span> (<span class="arithmatex">\(\times2\)</span> ou <span class="arithmatex">\(\times10\)</span>)</td>
 </tr>
 <tr>
 <td style="text-align: left;">La loss oscille fortement</td>
-<td style="text-align: left;">$\eta$ trop grand</td>
-<td style="text-align: left;">Réduire $\eta$ ($\div2$ ou $\div10$)</td>
+<td style="text-align: left;"><span class="arithmatex">\(\eta\)</span> trop grand</td>
+<td style="text-align: left;">Réduire <span class="arithmatex">\(\eta\)</span> (<span class="arithmatex">\(\div2\)</span> ou <span class="arithmatex">\(\div10\)</span>)</td>
 </tr>
 <tr>
 <td style="text-align: left;">La loss explose (NaN)</td>
-<td style="text-align: left;">$\eta$ beaucoup trop grand</td>
-<td style="text-align: left;">Réduire drastiquement $\eta$ ($\div100$)</td>
+<td style="text-align: left;"><span class="arithmatex">\(\eta\)</span> beaucoup trop grand</td>
+<td style="text-align: left;">Réduire drastiquement <span class="arithmatex">\(\eta\)</span> (<span class="arithmatex">\(\div100\)</span>)</td>
 </tr>
 <tr>
 <td style="text-align: left;">La loss stagne après un moment</td>
-<td style="text-align: left;">$\eta$ devenu trop grand</td>
+<td style="text-align: left;"><span class="arithmatex">\(\eta\)</span> devenu trop grand</td>
 <td style="text-align: left;">Utiliser un schedule (decay)</td>
 </tr>
 </tbody>
@@ -1169,6 +1203,8 @@ $b^{[l]} \leftarrow b^{[l]} - \eta \cdot \partial L/\partial b^{[l]}$</p>
     
     
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

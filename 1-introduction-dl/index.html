@@ -726,6 +726,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-architectures-specialisees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Architectures Spécialisées (CNN & RNN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1189,16 +1217,18 @@
 </blockquote>
 <div class="admonition abstract">
 <p class="admonition-title">Objectifs d'apprentissage</p>
-<p>À la fin de ce chapitre, tu sauras :
-* Situer l'IA, le Machine Learning et le Deep Learning les uns par rapport aux autres.
-* Expliquer le fonctionnement d'un neurone artificiel et d'un réseau multicouche.
-* Choisir une fonction d'activation, un optimizer et un learning rate adaptés.
-* Entraîner un réseau avec TensorFlow/Keras en évitant toute fuite de données (<em>data leakage</em>).</p>
+<p>À la fin de ce chapitre, tu sauras :</p>
 </div>
+<ul>
+<li>Situer l'IA, le Machine Learning et le Deep Learning les uns par rapport aux autres.</li>
+<li>Expliquer le fonctionnement d'un neurone artificiel et d'un réseau multicouche.</li>
+<li>Choisir une fonction d'activation, un optimizer et un learning rate adaptés.</li>
+<li>Entraîner un réseau avec TensorFlow/Keras en évitant toute fuite de données (<em>data leakage</em>).</li>
+</ul>
 <hr />
 <h2 id="un-neurone-qui-apprend">Un neurone qui apprend</h2>
 <h3 id="les-portes-logiques">Les portes logiques</h3>
-<p>Une porte logique est une petite règle de décision : elle reçoit deux réponses « oui » ou « non » (1 pour oui, 0 pour non) et rend une seule réponse. Le tableau indique la sortie pour chaque combinaison d'entrées ($x_1, x_2$).</p>
+<p>Une porte logique est une règle de décision élémentaire : elle reçoit deux signaux booléens (<span class="arithmatex">\(0\)</span> ou <span class="arithmatex">\(1\)</span>) et produit une unique sortie. Le tableau ci-dessous résume les cas pour chaque configuration d'entrées (<span class="arithmatex">\(x_1, x_2\)</span>) :</p>
 <table>
 <thead>
 <tr>
@@ -1229,7 +1259,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>NOR</strong> (NON-OU)</td>
-<td style="text-align: left;">aucune entrée ne vaut 1 (l'inverse de OR)</td>
+<td style="text-align: left;">aucune entrée ne vaut 1 : l'inverse de OR</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">0</td>
@@ -1247,19 +1277,15 @@
 </table>
 <div class="admonition info">
 <p class="admonition-title">Le saviez-vous ?</p>
-<p>Avec deux entrées, il y a 16 règles possibles en tout. Sur ces 16, <strong>14 se séparent par une droite</strong> (un neurone seul les apprend, comme NAND ou XNOR). Seules XOR et XNOR demandent plusieurs neurones.</p>
+<p>Avec deux entrées, il existe <span class="arithmatex">\(2 \times 2 \times 2 \times 2 = 16\)</span> règles logiques possibles[cite: 11]. Sur ces 16 règles, <strong>14 peuvent être résolues par un neurone unique</strong> (car une simple droite suffit à séparer les classes)[cite: 11]. Seules <strong>XOR</strong> et <strong>XNOR</strong> nécessitent un réseau multicouches.</p>
 </div>
 <hr />
 <h2 id="1-introduction-a-lia-au-machine-learning-et-au-deep-learning">1. Introduction à l'IA, au Machine Learning et au Deep Learning</h2>
 <h3 id="hierarchie-des-concepts">Hiérarchie des concepts</h3>
 <ul>
-<li><strong>Intelligence Artificielle (IA)</strong> : Toutes les techniques qui permettent à une machine de simuler l'intelligence humaine (résolution de problèmes, décision, compréhension du langage).<ul>
-<li><strong>Machine Learning (ML)</strong> : La machine apprend à partir de données au lieu de suivre des règles écrites à la main.<ul>
-<li><strong>Deep Learning (DL)</strong> : Réseaux de neurones à plusieurs couches (<em>deep</em> = profond). Excellents sur les images, les sons et les textes.</li>
-</ul>
-</li>
-</ul>
-</li>
+<li><strong>Intelligence Artificielle (IA)</strong> : L'ensemble des techniques permettant à une machine de simuler des traits de l'intelligence humaine (résolution de problèmes, prise de décision, raisonnement).</li>
+<li><strong>Machine Learning (ML)</strong> : Un sous-domaine où le système apprend directement à partir de données historiques au lieu d'exécuter des instructions codées manuellement.</li>
+<li><strong>Deep Learning (DL)</strong> : L'utilisation de réseaux de neurones artificiels profonds (« deep »)[cite: 11]. Ses performances sont particulièrement redoutables pour traiter des flux complexes (images, sons, texte brut).</li>
 </ul>
 <h2 id="video-introduction-au-deep-learning-machine-learnia">🎥 Vidéo : Introduction au Deep Learning (Machine Learnia)</h2>
 <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px; margin: 20px 0;">
@@ -1268,71 +1294,76 @@
 
 <h3 id="domaines-dapplication">Domaines d'application</h3>
 <ul>
-<li><strong>Voitures autonomes</strong> : détection d'obstacles, lecture de panneaux, planification de trajectoire.</li>
-<li><strong>Assistants vocaux</strong> : Siri, Alexa et Google Assistant.</li>
-<li><strong>LLM &amp; Génération</strong> : ChatGPT, modèles de langage profonds.</li>
-<li><strong>Reconnaissance faciale</strong> &amp; <strong>systèmes de recommandation</strong> (Netflix, Spotify).</li>
-<li><strong>Santé</strong> : aide au diagnostic et imagerie médicale.</li>
+<li><strong>Voitures autonomes</strong> : perception de l'environnement, détection d'obstacles et planification de trajectoires.</li>
+<li><strong>Assistants vocaux</strong> : reconnaissance et synthèse de la parole (Siri, Alexa, Google Assistant).</li>
+<li><strong>Traitement du langage</strong> : modèles de type LLM et génération de texte (ChatGPT).</li>
+<li><strong>Vision et recommandation</strong> : identification faciale, suggestions personnalisées (Netflix, YouTube, Spotify).</li>
+<li><strong>Santé et Finance</strong> : aide au diagnostic par imagerie médicale et détection algorithmique des fraudes.</li>
 </ul>
 <hr />
 <h2 id="2-machine-learning-classique">2. Machine Learning classique</h2>
 <h3 id="principe">Principe</h3>
-<p>Le ML cherche une fonction $f(x)$ qui approxime la relation entre les entrées $x$ (ex: surface d'une maison) et les sorties $y$ (son prix), de sorte que $f(x) \approx y$.</p>
+<p>Le ML cherche une fonction mathématique <span class="arithmatex">\(f(x)\)</span> qui approxime au mieux la relation entre les entrées <span class="arithmatex">\(x\)</span> (ex: surface d'un bien immobilier) et les sorties <span class="arithmatex">\(y\)</span> (son prix), de sorte que <span class="arithmatex">\(f(x) \approx y\)</span>.</p>
 <h3 id="exemple-la-regression-lineaire">Exemple : la régression linéaire</h3>
-<p>Le modèle cherche la droite qui passe au plus près des points :
-$$f(x) = a \cdot x + b$$
-Où $a$ est la pente et $b$ l'ordonnée à l'origine.</p>
+<p>Le modèle cherche à tracer la droite s'approchant le plus de l'ensemble des points :</p>
+<div class="arithmatex">\[f(x) = a \cdot x + b\]</div>
+<p>Où <span class="arithmatex">\(a\)</span> est la pente et <span class="arithmatex">\(b\)</span> l'ordonnée à l'origine.</p>
 <h3 id="fonction-de-cout-et-descente-de-gradient">Fonction de coût et Descente de gradient</h3>
-<p>La fonction de coût mesure l'erreur du modèle (ex: l'Erreur Quadratique Moyenne - MSE). La descente de gradient minimise cette erreur pas à pas :
-$$\text{paramètre}<em>{\text{nouveau}} = \text{paramètre}</em>{\text{ancien}} - \eta \times \text{gradient}$$
-<em>(où $\eta$ est le learning rate).</em></p>
+<p>Pour évaluer l'erreur, on utilise une fonction de coût (comme l'erreur quadratique moyenne - MSE):</p>
+<div class="arithmatex">\[L = \frac{1}{n} \sum (y_{\text{réel}} - y_{\text{prédit}})^2\]</div>
+<p>La <strong>descente de gradient</strong> ajuste ensuite les paramètres de manière itérative pour minimiser cette erreur :</p>
+<div class="arithmatex">\[\text{paramètre}_{\text{nouveau}} = \text{paramètre}_{\text{ancien}} - \eta \times \text{gradient}\]</div>
 <hr />
 <h2 id="3-histoire-des-reseaux-de-neurones">3. Histoire des réseaux de neurones</h2>
 <ul>
-<li><strong>1943</strong> : McCulloch &amp; Pitts (premier modèle mathématique).</li>
-<li><strong>1957</strong> : Rosenblatt invente le <strong>Perceptron</strong>.</li>
-<li><strong>1969</strong> : Minsky &amp; Papert montrent les limites du perceptron (échec sur XOR) $\rightarrow$ Premier hiver de l'IA.</li>
-<li><strong>1986</strong> : Popularisation de la <strong>Rétropropagation</strong> (Hinton) $\rightarrow$ Résolution du XOR.</li>
-<li><strong>1989-1998</strong> : LeCun et les <strong>CNN</strong> (LeNet-5 pour les images).</li>
-<li><strong>2012</strong> : <strong>AlexNet</strong> révolutionne ImageNet (GPU, Big Data, ReLU).</li>
-<li><strong>2017-2018</strong> : Les <strong>Transformers</strong> (BERT, GPT) et le mécanisme d'attention.</li>
-<li><strong>2020+</strong> : Modèles géants (GPT-3, ChatGPT, multimodalité).</li>
+<li><strong>1943</strong> : <strong>McCulloch et Pitts</strong> conçoivent le tout premier modèle mathématique de neurone artificiel.</li>
+<li><strong>1957</strong> : <strong>Frank Rosenblatt</strong> invente le <strong>perceptron</strong>, premier algorithme d'apprentissage automatique.</li>
+<li><strong>1969</strong> : <strong>Minsky et Papert</strong> démontrent l'incapacité du perceptron simple à résoudre le problème non-linéaire du XOR <span class="arithmatex">\(\rightarrow\)</span> Début du <strong>premier hiver de l'IA</strong> (1969-1980).</li>
+<li><strong>1986</strong> : Popularisation de la <strong>rétropropagation du gradient</strong> par Hinton, permettant d'entraîner des réseaux multicouches et de surmonter le verrou du XOR.</li>
+<li><strong>1989-1998</strong> : <strong>Yann LeCun</strong> introduit les réseaux de neurones convolutifs (<strong>CNN</strong>) avec le modèle <em>LeNet-5</em>.</li>
+<li><strong>2012</strong> : <strong>AlexNet</strong> pulvérise les scores de la compétition ImageNet grâce au triptyque : puissance des <strong>GPU</strong>, volumes massifs de données et généralisation de la fonction <strong>ReLU</strong>.</li>
+<li><strong>2017-2018</strong> : L'avènement des <strong>Transformers</strong> (mécanisme d'attention) avec BERT et GPT.</li>
+<li><strong>2020+</strong> : Ère des modèles génératifs de grande taille (GPT-3, ChatGPT, multimodalité).</li>
 </ul>
 <hr />
 <h2 id="4-le-neurone-artificiel-et-le-perceptron">4. Le neurone artificiel et le perceptron</h2>
-<p>Un neurone combine des entrées pondérées, ajoute un biais, puis applique une fonction d'activation non-linéaire :
-$$z = \sum (w_i x_i) + b \quad \text{et} \quad y = f(z)$$</p>
+<p>Un neurone artificiel réalise une combinaison linéaire de ses entrées suivie d'une transformation non-linéaire :</p>
+<div class="arithmatex">\[z = \sum (w_i x_i) + b \quad \text{et} \quad y = f(z)\]</div>
 <h3 id="les-fonctions-dactivation-majeures">Les fonctions d'activation majeures</h3>
 <ul>
-<li><strong>Sigmoïde</strong> : Sortie entre $[0, 1]$. Idéale en classification binaire, mais souffre du <em>vanishing gradient</em>.</li>
-<li><strong>Tanh</strong> : Sortie entre $[-1, 1]$, centrée en zéro.</li>
-<li><strong>ReLU</strong> ($\max(0, x)$) : Le standard incontournable des couches cachées (CNN, MLP). Attention au syndrome du <em>Dying ReLU</em>.</li>
-<li><strong>Softmax</strong> : Utilisé en sortie pour transformer des scores bruts en probabilités multi-classes.</li>
+<li><strong>Sigmoïde</strong> : Comprise dans <span class="arithmatex">\([0, 1]\)</span>. Idéale en sortie de classification binaire, mais sujette au phénomène de <em>vanishing gradient</em> (gradient saturé).</li>
+<li><strong>Tanh</strong> : Comprise dans <span class="arithmatex">\([-1, 1]\)</span>, centrée en zéro.</li>
+<li><strong>ReLU (<span class="arithmatex">\(\max(0, x)\)</span>)</strong> : Le standard incontournable des couches cachées (CNN, MLP). Attention toutefois au syndrome du <em>Dying ReLU</em> (neurones bloqués à zéro).</li>
+<li><strong>Softmax</strong> : Transforme des scores bruts en une distribution de probabilités dont la somme vaut <span class="arithmatex">\(1\)</span>, idéale pour la classification multi-classes.</li>
 </ul>
 <hr />
 <h2 id="5-reseaux-de-neurones-multicouches-mlp">5. Réseaux de neurones multicouches (MLP)</h2>
-<p>Un MLP est composé d'une couche d'entrée, de <strong>couches cachées</strong> (pleinement connectées) et d'une couche de sortie. L'apprentissage s'effectue en deux phases principales :
-1. <strong>Forward propagation</strong> : Calcul des prédictions de gauche à droite.
-2. <strong>Backpropagation (Rétropropagation)</strong> : Remontée de l'erreur de droite à gauche via la règle de la chaîne pour ajuster chaque poids et chaque biais.</p>
+<p>Un réseau multicouche s'articule autour de trois types de structures :</p>
+<ul>
+<li><strong>Couche d'entrée</strong> : Reçoit les données brutes sans effectuer de calcul.</li>
+<li><strong>Couches cachées</strong> : Extraient des représentations hiérarchiques de plus en plus complexes (des bords bas niveau jusqu'aux objets complets).</li>
+<li><strong>Couche de sortie</strong> : Formule la prédiction finale du modèle.</li>
+</ul>
+<p>L'apprentissage s'appuie sur la <strong>forward propagation</strong> (calcul des prédictions) couplée à la <strong>rétropropagation</strong> (propagation de l'erreur via la règle de la chaîne pour actualiser les poids de chaque couche).</p>
 <hr />
 <h2 id="6-les-optimizers-et-le-learning-rate">6. Les optimizers et le Learning Rate</h2>
 <ul>
-<li><strong>SGD</strong> : Simple mais lent et bruité.</li>
-<li><strong>Momentum</strong> : Ajoute de l'inertie pour passer les petits creux.</li>
-<li><strong>RMSProp</strong> : Adapte le pas de chaque paramètre individuellement.</li>
-<li><strong>Adam</strong> : Combine Momentum et RMSProp. C'est le <strong>standard actuel</strong> de l'industrie.</li>
+<li><strong>SGD</strong> : Descente de gradient stochastique par mini-batch (simple mais trajectoire bruitée).</li>
+<li><strong>Momentum</strong> : Intègre de l'inertie pour stabiliser la descente et franchir les zones de stagnation.</li>
+<li><strong>RMSProp</strong> : Ajuste dynamiquement le pas d'apprentissage de chaque paramètre individuellement.</li>
+<li><strong>Adam</strong> : Associe les avantages de Momentum et de RMSProp. C'est le <strong>standard actuel</strong> de l'industrie par sa robustesse.</li>
 </ul>
 <div class="admonition warning">
-<p class="admonition-title">Le rôle du Learning Rate ($\eta$)</p>
+<p class="admonition-title">Le rôle critique du Learning Rate (<span class="arithmatex">\(\eta\)</span>)</p>
 <ul>
-<li><strong>Trop petit</strong> : L'entraînement piétine et stagne.</li>
-<li><strong>Trop grand</strong> : La fonction de coût explose (<em>divergence</em> en valeurs <code>NaN</code>).</li>
-<li><strong>Bien réglé</strong> : La descente est fluide et rapide.</li>
+<li><strong>Trop petit</strong> : L'entraînement piétine et la convergence est extrêmement lente.</li>
+<li><strong>Trop grand</strong> : Les pas d'optimisation sautent par-dessus la vallée, provoquant une divergence totale (valeurs <code>NaN</code>).</li>
+<li><strong>Bien réglé</strong> : La descente de la fonction de coût s'opère de manière fluide et rapide.</li>
 </ul>
 </div>
 <hr />
 <h2 id="travaux-pratiques-associes">💡 Travaux Pratiques associés</h2>
-<p>Rends-toi dans la section <strong>Travaux Pratiques</strong> pour mettre les mains dans le cambouis sur 5 mini-projets concrets (du Perceptron sous NumPy aux CNN sur MNIST/Fashion-MNIST et génération de texte par RNN/LSTM).</p>
+<p>Rends-toi dans la section <strong>Travaux Pratiques</strong> pour mettre les mains dans le cambouis sur tes mini-projets (du Perceptron sous NumPy aux CNN sur MNIST/Fashion-MNIST et génération de texte par RNN/LSTM).</p>
 
 
 
@@ -1392,6 +1423,8 @@ $$z = \sum (w_i x_i) + b \quad \text{et} \quad y = f(z)$$</p>
     
     
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

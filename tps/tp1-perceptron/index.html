@@ -13,7 +13,7 @@
       
       
       
-        <link rel="prev" href="../../3-reseaux-multicouches/">
+        <link rel="prev" href="../../4-architectures-specialisees/">
       
       
         <link rel="next" href="../tp2-iris-mlp/">
@@ -457,6 +457,34 @@
     
   
     3. Réseaux Multicouches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-architectures-specialisees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Architectures Spécialisées (CNN & RNN)
   
 
     
@@ -998,7 +1026,7 @@
 <p>Implémenter un neurone artificiel (perceptron simple) en Python pur (<code>NumPy</code>) pour résoudre des problèmes de classification binaire, notamment l'apprentissage des portes logiques <strong>AND</strong> et <strong>NOR</strong> par descente de gradient.</p>
 <hr />
 <h2 id="1-donnees-dentrainement-portes-and-nor">1. Données d'entraînement (Portes AND &amp; NOR)</h2>
-<p>Le perceptron prend en entrée une matrice $X$ de dimensions $(4, 2)$ représentant les quatre combinaisons possibles pour deux variables booléennes, et un vecteur cible $y$ associé.</p>
+<p>Le perceptron prend en entrée une matrice <span class="arithmatex">\(X\)</span> de dimensions <span class="arithmatex">\((4, 2)\)</span> représentant les quatre combinaisons possibles pour deux variables booléennes, et un vecteur cible <span class="arithmatex">\(y\)</span> associé.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
@@ -1021,7 +1049,7 @@
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">()</span>   <span class="c1"># Biais initial</span>
 </code></pre></div>
 <h3 id="fonction-dactivation-sigmoide">Fonction d'activation (Sigmoïde)</h3>
-<p>La sigmoïde comprime toute valeur réelle en une probabilité comprise entre $0$ et $1$.</p>
+<p>La sigmoïde comprime toute valeur réelle en une probabilité comprise entre <span class="arithmatex">\(0\)</span> et <span class="arithmatex">\(1\)</span>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
 
@@ -1131,6 +1159,8 @@
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

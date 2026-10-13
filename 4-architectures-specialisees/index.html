@@ -1,0 +1,1216 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Restitution et notes sur les 6 mini-projets Keras">
+      
+      
+        <meta name="author" content="Gregory">
+      
+      
+      
+        <link rel="prev" href="../3-reseaux-multicouches/">
+      
+      
+        <link rel="next" href="../tps/tp1-perceptron/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>4. Architectures Spécialisées (CNN & RNN) - Projet Deep Learning - EP1</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-les-architectures-specialisees-cnn-et-rnn" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href=".." title="Projet Deep Learning - EP1" class="md-header__button md-logo" aria-label="Projet Deep Learning - EP1" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Projet Deep Learning - EP1
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4. Architectures Spécialisées (CNN & RNN)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Passer au mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passer au mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Passer au mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passer au mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Accueil
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../1-introduction-dl/" class="md-tabs__link">
+          
+  
+  
+  Cours Théoriques
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../tps/tp1-perceptron/" class="md-tabs__link">
+          
+  
+  
+  Travaux Pratiques (TPs)
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Projet Deep Learning - EP1" class="md-nav__button md-logo" aria-label="Projet Deep Learning - EP1" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Projet Deep Learning - EP1
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours Théoriques
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cours Théoriques
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-introduction-dl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Intro DL & IA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-neurone-perceptron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Le Neurone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-reseaux-multicouches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Réseaux Multicouches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Architectures Spécialisées (CNN & RNN)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Architectures Spécialisées (CNN & RNN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-vision-par-ordinateur-les-reseaux-convolutifs-cnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Vision par ordinateur : Les Réseaux Convolutifs (CNN)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Vision par ordinateur : Les Réseaux Convolutifs (CNN)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-les-mlp-echouent-sur-les-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pourquoi les MLP échouent sur les images ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anatomie-dun-bloc-convolutif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anatomie d'un bloc convolutif
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-hierarchie-des-couches-dans-un-cnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La hiérarchie des couches dans un CNN
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-traitement-sequentiel-les-reseaux-recurrents-rnn-lstm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Traitement séquentiel : Les Réseaux Récurrents (RNN &amp; LSTM)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Traitement séquentiel : Les Réseaux Récurrents (RNN &amp; LSTM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-defi-des-donnees-sequentielles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le défi des données séquentielles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparatif-simplernn-vs-lstm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparatif : SimpleRNN vs LSTM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-role-de-la-couche-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le rôle de la couche Embedding
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bonnes-pratiques-mlops-eviter-le-data-leakage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Bonnes pratiques MLOps : Éviter le Data Leakage
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Travaux Pratiques (TPs)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Travaux Pratiques (TPs)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tps/tp1-perceptron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 - Perceptron (Portes Logiques)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tps/tp2-iris-mlp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 - Classification Iris (MLP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tps/tp3-titanic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 - Titanic (Tabulaire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tps/tp4-cnn-mnist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 - CNN (MNIST & Fashion)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tps/tp5-rnn-hugo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 - RNN & Texte (Victor Hugo)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-vision-par-ordinateur-les-reseaux-convolutifs-cnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Vision par ordinateur : Les Réseaux Convolutifs (CNN)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Vision par ordinateur : Les Réseaux Convolutifs (CNN)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-les-mlp-echouent-sur-les-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pourquoi les MLP échouent sur les images ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anatomie-dun-bloc-convolutif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anatomie d'un bloc convolutif
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-hierarchie-des-couches-dans-un-cnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La hiérarchie des couches dans un CNN
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-traitement-sequentiel-les-reseaux-recurrents-rnn-lstm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Traitement séquentiel : Les Réseaux Récurrents (RNN &amp; LSTM)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Traitement séquentiel : Les Réseaux Récurrents (RNN &amp; LSTM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-defi-des-donnees-sequentielles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le défi des données séquentielles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparatif-simplernn-vs-lstm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparatif : SimpleRNN vs LSTM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-role-de-la-couche-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le rôle de la couche Embedding
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bonnes-pratiques-mlops-eviter-le-data-leakage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Bonnes pratiques MLOps : Éviter le Data Leakage
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="4-les-architectures-specialisees-cnn-et-rnn">4. Les architectures spécialisées : CNN et RNN</h1>
+<blockquote>
+<p>Plongée au cœur des réseaux de neurones spécialisés : comment traiter la vision par ordinateur avec les convolutions (CNN) et analyser les séquences textuelles ou temporelles avec la récurrence (RNN &amp; LSTM).</p>
+</blockquote>
+<div class="admonition abstract">
+<p class="admonition-title">Objectifs d'apprentissage</p>
+<p>À la fin de ce chapitre, tu sauras :</p>
+</div>
+<ul>
+<li>Expliquer en détail le rôle de chaque couche d'un réseau convolutif (<code>Conv2D</code>, <code>MaxPooling2D</code>, <code>Flatten</code>, <code>Dropout</code>).</li>
+<li>Comprendre pourquoi les réseaux fully-connected (MLP) s'avèrent inefficaces pour traiter les images.</li>
+<li>Appréhender le fonctionnement séquentiel des réseaux récurrents (<code>SimpleRNN</code>) et leurs évolutions à portes (<code>LSTM</code>).</li>
+<li>Maîtriser l'utilité des couches d'incorporation (<code>Embedding</code>) pour le traitement du langage naturel (NLP).</li>
+</ul>
+<hr />
+<h2 id="1-vision-par-ordinateur-les-reseaux-convolutifs-cnn">1. Vision par ordinateur : Les Réseaux Convolutifs (CNN)</h2>
+<h3 id="pourquoi-les-mlp-echouent-sur-les-images">Pourquoi les MLP échouent sur les images ?</h3>
+<p>Imaginons une image modeste en niveaux de gris de <span class="arithmatex">\(28 \times 28\)</span> pixels (comme le dataset MNIST). Cela représente déjà <span class="arithmatex">\(784\)</span> pixels d'entrée. Si la première couche cachée d'un MLP comporte par exemple <span class="arithmatex">\(512\)</span> neurones, le nombre de poids à apprendre rien que pour cette première connexion est de <span class="arithmatex">\(784 \times 512 \approx 400\,000\)</span> paramètres ! 
+Pour une image couleur moderne de <span class="arithmatex">\(256 \times 256\)</span> pixels, le nombre de paramètres explose littéralement, menant inévitablement à un surapprentissage massif (<em>overfitting</em>) et à une perte totale de la structure spatiale (le fait qu'un pixel soit voisin d'un autre).</p>
+<p>La solution réside dans les <strong>CNN (Convolutional Neural Networks)</strong>, qui s'inspirent directement du cortex visuel humain en extrayant des motifs locaux grâce au partage de poids.</p>
+<hr />
+<h3 id="anatomie-dun-bloc-convolutif">Anatomie d'un bloc convolutif</h3>
+<p>Un CNN alterne principalement deux types de couches pour l'extraction des caractéristiques (<em>Feature Extraction</em>), suivies de couches denses pour la classification.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Composant du CNN</th>
+<th style="text-align: left;">Rôle principal</th>
+<th style="text-align: left;">Fonctionnement technique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>Conv2D</code></strong> (Convolution)</td>
+<td style="text-align: left;">Détecte des motifs visuels locaux (bords, lignes, textures, formes géométriques).</td>
+<td style="text-align: left;">Glisse un filtre (noyau, ex: <span class="arithmatex">\(3 \times 3\)</span>) sur l'image en réalisant un produit scalaire pour générer une <em>feature map</em> (carte de caractéristiques).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>MaxPooling2D</code></strong> (Sous-échantillonnage)</td>
+<td style="text-align: left;">Réduit la dimension spatiale de l'image, diminue le coût de calcul et offre une invariance aux légères translations.</td>
+<td style="text-align: left;">Conserve uniquement la valeur maximale (ou moyenne) dans une fenêtre glissante (ex: <span class="arithmatex">\(2 \times 2\)</span>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Flatten</code></strong> (Aplatissement)</td>
+<td style="text-align: left;">Fait la transition entre l'extraction spatiale et la classification.</td>
+<td style="text-align: left;">Transforme les cartes de caractéristiques 2D en un vecteur unidimensionnel 1D.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Dense</code></strong> (Totalement connecté)</td>
+<td style="text-align: left;">Combine les caractéristiques de haut niveau pour attribuer un score aux classes finales.</td>
+<td style="text-align: left;">Connexions classiques de neurones (MLP) avec une fonction d'activation (<code>ReLU</code> puis <code>Softmax</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Dropout</code></strong> (Régularisation)</td>
+<td style="text-align: left;">Lutte activement contre le surapprentissage.</td>
+<td style="text-align: left;">Désactive aléatoirement un pourcentage de neurones (ex: 50%) à chaque étape d'entraînement.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="la-hierarchie-des-couches-dans-un-cnn">La hiérarchie des couches dans un CNN</h3>
+<p>Plus on progresse vers les couches profondes du réseau, plus la complexité des motifs détectés augmente :</p>
+<ol>
+<li>
+<p><strong>Couches basses</strong> : Détection des contours, des orientations et des contrastes simples.</p>
+</li>
+<li>
+<p><strong>Couches intermédiaires</strong> : Combinaison des contours pour identifier des textures et des formes géométriques basiques (cercles, coins).</p>
+</li>
+<li>
+<p><strong>Couches hautes</strong> : Reconnaissance de parties d'objets spécifiques (yeux, roues, anses de tasses).</p>
+</li>
+<li>
+<p><strong>Sortie</strong> : Classification globale de l'objet ou de l'image (ex: chiffre <span class="arithmatex">\(5\)</span>, vêtement de type <em>Pantalon</em>).</p>
+</li>
+</ol>
+<hr />
+<h2 id="2-traitement-sequentiel-les-reseaux-recurrents-rnn-lstm">2. Traitement séquentiel : Les Réseaux Récurrents (RNN &amp; LSTM)</h2>
+<h3 id="le-defi-des-donnees-sequentielles">Le défi des données séquentielles</h3>
+<p>Les données textuelles, les séries temporelles financières ou les flux audio possèdent une dimension temporelle ou ordonnée : <strong>l'ordre des mots ou des événements change complètement le sens</strong>. Un réseau standard (MLP ou CNN) traite chaque entrée de manière indépendante et ne possède aucune « mémoire » du passé.</p>
+<p>Les <strong>RNN (Recurrent Neural Networks)</strong> introduisent une boucle de rétroaction interne : à chaque pas de temps <span class="arithmatex">\(t\)</span>, le neurone reçoit à la fois l'élément actuel <span class="arithmatex">\(x_t\)</span> et son propre état caché précédent <span class="arithmatex">\(h_{t-1}\)</span>.</p>
+<hr />
+<h3 id="comparatif-simplernn-vs-lstm">Comparatif : SimpleRNN vs LSTM</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Architecture</th>
+<th style="text-align: left;">Principe de fonctionnement</th>
+<th style="text-align: left;">Limites majeures</th>
+<th style="text-align: left;">Cas d'usage typique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>SimpleRNN</code></strong></td>
+<td style="text-align: left;">Réactualise son état caché de façon récursive à chaque mot.</td>
+<td style="text-align: left;">Souffre cruellement du <em>vanishing gradient</em> sur les phrases longues : il « oublie » le début de la phrase.</td>
+<td style="text-align: left;">Mini-projets pédagogiques, séquences très courtes.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>LSTM</code></strong> <em>(Long Short-Term Memory)</em></td>
+<td style="text-align: left;">Introduit un « tapis roulant mémoriel » régulé par trois portes (<em>oubli</em>, <em>entrée</em>, <em>sortie</em>).</td>
+<td style="text-align: left;">Modèle plus lourd, nécessite davantage de temps de calcul et de données.</td>
+<td style="text-align: left;">Génération de texte, traduction automatique, séries temporelles complexes.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="le-role-de-la-couche-embedding">Le rôle de la couche <code>Embedding</code></h3>
+<p>Avant d'entrer dans un réseau récurrent, les mots textuels doivent être convertis en vecteurs numériques.</p>
+<ul>
+<li>
+<p>Un encodage brutal de type <em>one-hot</em> produit des vecteurs immenses et creux, incapables de capturer la sémantique (par exemple, le fait que « chat » et « félins » soient proches).</p>
+</li>
+<li>
+<p>La couche <strong><code>Embedding</code></strong> agit comme une table de correspondance apprenable : elle projette chaque mot du vocabulaire dans un espace vectoriel continu de dimension fixe (ex: 16 ou 64 dimensions), où des mots au sens proche se retrouvent géométriquement rapprochés.</p>
+</li>
+</ul>
+<hr />
+<h2 id="3-bonnes-pratiques-mlops-eviter-le-data-leakage">3. Bonnes pratiques MLOps : Éviter le <em>Data Leakage</em></h2>
+<p>Quel que soit le modèle choisi (MLP, CNN ou RNN), une règle d'or absolue s'applique en Data Engineering et en Deep Learning : <strong>l'isolation stricte du jeu de test</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Rappel critique sur la fuite de données (<em>Data Leakage</em>)</p>
+<ul>
+<li><strong>La normalisation (<code>StandardScaler</code> / division par 255)</strong> : Les paramètres statistiques (moyenne, écart-type) doivent <strong>toujours</strong> être calculés exclusivement sur le jeu d'entraînement (<code>X_train</code>), puis appliqués tels quels au jeu de test (<code>X_test</code>). </li>
+<li>Si l'on calcule les métriques sur l'ensemble global des données avant la séparation, le modèle « devine » indirectement des informations sur le test, faussant totalement l'évaluation finale des performances de généralisation.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

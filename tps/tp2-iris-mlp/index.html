@@ -470,6 +470,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-architectures-specialisees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Architectures Spécialisées (CNN & RNN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -866,7 +894,7 @@
 <h2 id="1-etapes-de-preparation-des-donnees">1. Étapes de préparation des données</h2>
 <ol>
 <li><strong>Séparation Train/Test</strong> : Effectuée <em>avant</em> tout calcul statistique pour éviter la fuite de données (<em>data leakage</em>)[cite: 89, 102]. L'option <code>stratify=y</code> garantit de conserver les proportions de chaque classe[cite: 109].</li>
-<li><strong>Encodage des étiquettes (One-Hot Encoding)</strong> : Transformation des classes $(0, 1, 2)$ en vecteurs binaires[cite: 110].</li>
+<li><strong>Encodage des étiquettes (One-Hot Encoding)</strong> : Transformation des classes <span class="arithmatex">\((0, 1, 2)\)</span> en vecteurs binaires[cite: 110].</li>
 <li><strong>Normalisation (StandardScaler)</strong> : Ajusté uniquement sur le jeu d'entraînement (<code>fit_transform</code>) puis appliqué sur le test (<code>transform</code>)[cite: 110].</li>
 </ol>
 <h2 id="2-architecture-du-modele-4-8-3">2. Architecture du Modèle (4 - 8 - 3)</h2>
@@ -944,6 +972,8 @@
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
