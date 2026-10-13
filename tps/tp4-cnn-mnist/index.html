@@ -895,19 +895,19 @@
 <hr />
 <h2 id="1-pretraitement-des-images">1. Prétraitement des images</h2>
 <ul>
-<li><strong>Normalisation des pixels</strong> : Division par 255.0 pour ramener les valeurs de <span class="arithmatex">\([0, 255]\)</span> à <span class="arithmatex">\([0, 1]\)</span>[cite: 93, 120].</li>
-<li><strong>Ajout du canal</strong> : Passage d'une forme de <span class="arithmatex">\((N, 28, 28)\)</span> à <span class="arithmatex">\((N, 28, 28, 1)\)</span> pour expliciter le canal de nuances de gris[cite: 93, 120].</li>
+<li><strong>Normalisation des pixels</strong> : Division par 255.0 pour ramener les valeurs de <span class="arithmatex">\([0, 255]\)</span> à <span class="arithmatex">\([0, 1]\)</span>.</li>
+<li><strong>Ajout du canal</strong> : Passage d'une forme de <span class="arithmatex">\((N, 28, 28)\)</span> à <span class="arithmatex">\((N, 28, 28, 1)\)</span> pour expliciter le canal de nuances de gris.</li>
 </ul>
 <h2 id="2-architecture-type-dun-cnn">2. Architecture type d'un CNN</h2>
 <ul>
-<li><strong>Conv2D</strong> : Extraction de motifs locaux (bords, textures)[cite: 76, 93].</li>
-<li><strong>MaxPooling2D</strong> : Réduction spatiale de la dimension des cartes de caractéristiques (pooling)[cite: 93].</li>
-<li><strong>Flatten</strong> : Transformation de la matrice en vecteur plat[cite: 93].</li>
-<li><strong>Dense &amp; Dropout</strong> : Couche dense de classification et coupure aléatoire de connexions pour lutter contre l'overfitting[cite: 77, 93].</li>
+<li><strong>Conv2D</strong> : Extraction de motifs locaux (bords, textures).</li>
+<li><strong>MaxPooling2D</strong> : Réduction spatiale de la dimension des cartes de caractéristiques (pooling).</li>
+<li><strong>Flatten</strong> : Transformation de la matrice en vecteur plat.</li>
+<li><strong>Dense &amp; Dropout</strong> : Couche dense de classification et coupure aléatoire de connexions pour lutter contre l'overfitting.</li>
 </ul>
 <h2 id="3-analyse-des-performances">3. Analyse des performances</h2>
 <ul>
-<li>Évaluation de la précision sur le jeu de test et identification des classes les plus fréquemment confondues via la matrice de confusion[cite: 94, 124].</li>
+<li>Évaluation de la précision sur le jeu de test et identification des classes les plus fréquemment confondues via la matrice de confusion.</li>
 </ul>
 <hr />
 <blockquote>

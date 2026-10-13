@@ -887,23 +887,23 @@
 
 <h1 id="tp5-generation-de-texte-sequentielle-avec-les-rnn-et-lstm">TP5 : Génération de texte séquentielle avec les RNN et LSTM</h1>
 <h2 id="objectif">Objectif</h2>
-<p>Modéliser des séquences textuelles à partir d'un corpus d'œuvres de Victor Hugo (<code>textes.txt</code>) pour prédire le mot suivant et générer de la poésie de manière autorégressive[cite: 95, 136].</p>
+<p>Modéliser des séquences textuelles à partir d'un corpus d'œuvres de Victor Hugo (<code>textes.txt</code>) pour prédire le mot suivant et générer de la poésie de manière autorégressive.</p>
 <hr />
 <h2 id="1-traitement-textuel-et-vectorisation">1. Traitement textuel et Vectorisation</h2>
 <ul>
-<li><strong>Tokenizer</strong> : Conversion des mots en indices numériques basés sur un vocabulaire restreint (<code>vocab_size = 1000</code>)[cite: 95, 136].</li>
-<li><strong>Fenêtrage temporel (<code>window_size = 3</code>)</strong> : Constitution des séquences d'apprentissage (les 3 mots précédents prédisent le 4e)[cite: 95, 136].</li>
-<li><strong>Pad_sequences</strong> : Complétion par des zéros (<em>bourrage</em>) pour uniformiser la taille des séquences d'entrée[cite: 96, 136].</li>
+<li><strong>Tokenizer</strong> : Conversion des mots en indices numériques basés sur un vocabulaire restreint (<code>vocab_size = 1000</code>).</li>
+<li><strong>Fenêtrage temporel (<code>window_size = 3</code>)</strong> : Constitution des séquences d'apprentissage (les 3 mots précédents prédisent le 4e).</li>
+<li><strong>Pad_sequences</strong> : Complétion par des zéros (<em>bourrage</em>) pour uniformiser la taille des séquences d'entrée.</li>
 </ul>
 <h2 id="2-architecture-du-modele-sequentiel">2. Architecture du Modèle Séquentiel</h2>
 <ul>
-<li><strong>Embedding</strong> : Plongeon lexical pour projeter les indices de mots en vecteurs denses continus (<code>embedding_dim = 16</code>)[cite: 96, 137].</li>
-<li><strong>SimpleRNN vs LSTM</strong> : Comparaison des performances et de la mémoire de contexte à long terme en remplaçant la couche <code>SimpleRNN(32)</code> par un <code>LSTM(64)</code>[cite: 96, 138].</li>
-<li><strong>Couche de sortie</strong> : Dense avec activation <code>softmax</code> sur tout le vocabulaire[cite: 96, 137].</li>
+<li><strong>Embedding</strong> : Plongeon lexical pour projeter les indices de mots en vecteurs denses continus (<code>embedding_dim = 16</code>).</li>
+<li><strong>SimpleRNN vs LSTM</strong> : Comparaison des performances et de la mémoire de contexte à long terme en remplaçant la couche <code>SimpleRNN(32)</code> par un <code>LSTM(64)</code>.</li>
+<li><strong>Couche de sortie</strong> : Dense avec activation <code>softmax</code> sur tout le vocabulaire.</li>
 </ul>
 <h2 id="3-generation-de-texte-et-temperature">3. Génération de texte et Température</h2>
 <ul>
-<li>Fonction de génération autorégressive utilisant un tirage pondéré modulé par un paramètre de <strong>température</strong> (pour ajuster la créativité ou la répétitivité du texte généré)[cite: 97, 138].</li>
+<li>Fonction de génération autorégressive utilisant un tirage pondéré modulé par un paramètre de <strong>température</strong> (pour ajuster la créativité ou la répétitivité du texte généré).</li>
 </ul>
 <hr />
 <blockquote>

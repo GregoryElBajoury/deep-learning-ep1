@@ -889,25 +889,25 @@
 
 <h1 id="tp2-classification-des-fleurs-iris-avec-un-mlp">TP2 : Classification des fleurs Iris avec un MLP</h1>
 <h2 id="objectif">Objectif</h2>
-<p>Classifier des fleurs Iris en 3 catégories à partir de 4 mesures morphologiques (longueur/largeur des sépales et des pétales) en utilisant un réseau de neurones multicouches (MLP) avec <strong>Keras</strong>[cite: 89, 108].</p>
+<p>Classifier des fleurs Iris en 3 catégories à partir de 4 mesures morphologiques (longueur/largeur des sépales et des pétales) en utilisant un réseau de neurones multicouches (MLP) avec <strong>Keras</strong>.</p>
 <hr />
 <h2 id="1-etapes-de-preparation-des-donnees">1. Étapes de préparation des données</h2>
 <ol>
-<li><strong>Séparation Train/Test</strong> : Effectuée <em>avant</em> tout calcul statistique pour éviter la fuite de données (<em>data leakage</em>)[cite: 89, 102]. L'option <code>stratify=y</code> garantit de conserver les proportions de chaque classe[cite: 109].</li>
-<li><strong>Encodage des étiquettes (One-Hot Encoding)</strong> : Transformation des classes <span class="arithmatex">\((0, 1, 2)\)</span> en vecteurs binaires[cite: 110].</li>
-<li><strong>Normalisation (StandardScaler)</strong> : Ajusté uniquement sur le jeu d'entraînement (<code>fit_transform</code>) puis appliqué sur le test (<code>transform</code>)[cite: 110].</li>
+<li><strong>Séparation Train/Test</strong> : Effectuée <em>avant</em> tout calcul statistique pour éviter la fuite de données (<em>data leakage</em>). L'option <code>stratify=y</code> garantit de conserver les proportions de chaque classe.</li>
+<li><strong>Encodage des étiquettes (One-Hot Encoding)</strong> : Transformation des classes <span class="arithmatex">\((0, 1, 2)\)</span> en vecteurs binaires.</li>
+<li><strong>Normalisation (StandardScaler)</strong> : Ajusté uniquement sur le jeu d'entraînement (<code>fit_transform</code>) puis appliqué sur le test (<code>transform</code>).</li>
 </ol>
 <h2 id="2-architecture-du-modele-4-8-3">2. Architecture du Modèle (4 - 8 - 3)</h2>
 <ul>
-<li><strong>Couche d'entrée</strong> : 4 neurones (les 4 features)[cite: 110].</li>
+<li><strong>Couche d'entrée</strong> : 4 neurones (les 4 features).</li>
 <li><strong>Couche cachée</strong> : 8 neurones avec une fonction d'activation <strong>ReLU</strong> (40 paramètres)[cite: 110].</li>
-<li><strong>Couche de sortie</strong> : 3 neurones avec une activation <strong>Softmax</strong> pour prédire les probabilités des 3 classes (27 paramètres)[cite: 80, 110].</li>
+<li><strong>Couche de sortie</strong> : 3 neurones avec une activation <strong>Softmax</strong> pour prédire les probabilités des 3 classes (27 paramètres).</li>
 </ul>
 <h2 id="3-compilation-et-entrainement">3. Compilation et Entraînement</h2>
 <ul>
-<li><strong>Optimizer</strong> : <code>adam</code>[cite: 113].</li>
-<li><strong>Loss</strong> : <code>categorical_crossentropy</code>[cite: 113].</li>
-<li>Évaluation finale et analyse de la matrice de confusion[cite: 118].</li>
+<li><strong>Optimizer</strong> : <code>adam</code>.</li>
+<li><strong>Loss</strong> : <code>categorical_crossentropy</code>.</li>
+<li>Évaluation finale et analyse de la matrice de confusion.</li>
 </ul>
 <hr />
 <blockquote>

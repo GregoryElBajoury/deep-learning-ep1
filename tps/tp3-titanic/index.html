@@ -867,20 +867,20 @@
 
 <h1 id="tp3-prediction-de-survie-au-naufrage-du-titanic">TP3 : Prédiction de survie au naufrage du Titanic</h1>
 <h2 id="objectif">Objectif</h2>
-<p>Mener à bien une classification binaire complexe sur un jeu de données tabulaires réelles et hétérogènes (le Titanic) pour prédire si un passager a survécu ou non[cite: 90, 125].</p>
+<p>Mener à bien une classification binaire complexe sur un jeu de données tabulaires réelles et hétérogènes (le Titanic) pour prédire si un passager a survécu ou non.</p>
 <hr />
 <h2 id="1-pipeline-de-pretraitement-rigoureux">1. Pipeline de prétraitement rigoureux</h2>
 <ol>
-<li><strong>Sélection des features</strong> : Choix des colonnes pertinentes (<code>pclass</code>, <code>sex</code>, <code>age</code>, <code>sibsp</code>, <code>parch</code>, <code>fare</code>, <code>embarked</code>)[cite: 91, 127].</li>
-<li><strong>Train/Test Split</strong> : Séparation avec stratification[cite: 91, 127].</li>
-<li><strong>Gestion des valeurs manquantes</strong> : Imputation de l'âge par la <em>médiane</em> du train et du port d'embarquement par le <em>mode</em> du train[cite: 91, 127].</li>
-<li><strong>Encodage catégoriel</strong> : Utilisation de <code>pd.get_dummies</code> avec suppression de la première colonne pour éviter la colinéarité (<code>drop_first=True</code>)[cite: 91, 128].</li>
-<li><strong>Normalisation numérique</strong> : Standardisation des colonnes continues (<code>age</code>, <code>fare</code>)[cite: 91, 129].</li>
+<li><strong>Sélection des features</strong> : Choix des colonnes pertinentes (<code>pclass</code>, <code>sex</code>, <code>age</code>, <code>sibsp</code>, <code>parch</code>, <code>fare</code>, <code>embarked</code>).</li>
+<li><strong>Train/Test Split</strong> : Séparation avec stratification.</li>
+<li><strong>Gestion des valeurs manquantes</strong> : Imputation de l'âge par la <em>médiane</em> du train et du port d'embarquement par le <em>mode</em> du train.</li>
+<li><strong>Encodage catégoriel</strong> : Utilisation de <code>pd.get_dummies</code> avec suppression de la première colonne pour éviter la colinéarité (<code>drop_first=True</code>).</li>
+<li><strong>Normalisation numérique</strong> : Standardisation des colonnes continues (<code>age</code>, <code>fare</code>).</li>
 </ol>
 <h2 id="2-modelisation-et-regularisation">2. Modélisation et Régularisation</h2>
 <ul>
-<li><strong>Architecture</strong> : Dense avec 27 neurones cachés (ReLU) et 1 neurone de sortie (Sigmoïde)[cite: 129, 130].</li>
-<li><strong>Early Stopping</strong> : Utilisation d'un rappel (<em>callback</em>) pour interrompre l'entraînement lorsque la perte de validation ne s'améliore plus (patience de 10 époques) afin d'éviter le surapprentissage[cite: 91, 131].</li>
+<li><strong>Architecture</strong> : Dense avec 27 neurones cachés (ReLU) et 1 neurone de sortie (Sigmoïde).</li>
+<li><strong>Early Stopping</strong> : Utilisation d'un rappel (<em>callback</em>) pour interrompre l'entraînement lorsque la perte de validation ne s'améliore plus (patience de 10 époques) afin d'éviter le surapprentissage.</li>
 </ul>
 <hr />
 <blockquote>
