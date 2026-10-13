@@ -24,7 +24,7 @@ Une porte logique est une règle de décision élémentaire : elle reçoit deux 
 | **XOR** (OU exclusif) | une seule des deux entrées vaut 1| 0 | 1 | 1 | 0 |
 
 !!! info "Le saviez-vous ?"
-    Avec deux entrées, il existe $2 \times 2 \times 2 \times 2 = 16$ règles logiques possibles[cite: 11]. Sur ces 16 règles, **14 peuvent être résolues par un neurone unique** (car une simple droite suffit à séparer les classes)[cite: 11]. Seules **XOR** et **XNOR** nécessitent un réseau multicouches.
+    Avec deux entrées, il existe $2 \times 2 \times 2 \times 2 = 16$ règles logiques possibles[cite: 11]. Sur ces 16 règles, **14 peuvent être résolues par un neurone unique** (car une simple droite suffit à séparer les classes). Seules **XOR** et **XNOR** nécessitent un réseau multicouches.
 
 ---
 
@@ -34,7 +34,7 @@ Une porte logique est une règle de décision élémentaire : elle reçoit deux 
 
 - **Intelligence Artificielle (IA)** : L'ensemble des techniques permettant à une machine de simuler des traits de l'intelligence humaine (résolution de problèmes, prise de décision, raisonnement).
 - **Machine Learning (ML)** : Un sous-domaine où le système apprend directement à partir de données historiques au lieu d'exécuter des instructions codées manuellement.
-- **Deep Learning (DL)** : L'utilisation de réseaux de neurones artificiels profonds (« deep »)[cite: 11]. Ses performances sont particulièrement redoutables pour traiter des flux complexes (images, sons, texte brut).
+- **Deep Learning (DL)** : L'utilisation de réseaux de neurones artificiels profonds (« deep »). Ses performances sont particulièrement redoutables pour traiter des flux complexes (images, sons, texte brut).
 
 ## 🎥 Vidéo : Introduction au Deep Learning (Machine Learnia)
 
