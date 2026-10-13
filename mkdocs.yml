@@ -39,6 +39,12 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 
 nav:
   - Accueil: index.md
@@ -46,6 +52,7 @@ nav:
     - 1. Intro DL & IA: 1-introduction-dl.md
     - 2. Le Neurone: 2-neurone-perceptron.md
     - 3. Réseaux Multicouches: 3-reseaux-multicouches.md
+    - 4. Architectures Spécialisées (CNN & RNN): 4-architectures-specialisees.md
   - Travaux Pratiques (TPs):
     - TP1 - Perceptron (Portes Logiques): tps/tp1-perceptron.md
     - TP2 - Classification Iris (MLP): tps/tp2-iris-mlp.md

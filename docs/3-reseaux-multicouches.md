@@ -16,18 +16,23 @@
 
 ### Forward propagation
 Calculer la sortie du réseau à partir des entrées, couche après couche :
+
 $z^{[l]} = W^{[l]} \cdot a^{[l-1]} + b^{[l]}$
 puis $a^{[l]} = f(z^{[l]})$.
+
 La sortie de la dernière couche est la prédiction $\hat{y}$.
 
 ### Rétropropagation (Backpropagation)
 Elle calcule le gradient de la perte par rapport à chaque poids et chaque biais :
+
 1. Calculer l'erreur en sortie, par exemple $\delta_{sortie} = (\hat{y} - y) \cdot f'(z_{sortie})$
+
 2. La propager vers les couches précédentes avec la règle de la chaîne (chain rule).
 3. Pour chaque couche, calculer la contribution de chaque poids à l'erreur finale.
 
 ### Mise à jour des paramètres
 $W^{[l]} \leftarrow W^{[l]} - \eta \cdot \partial L/\partial W^{[l]}$
+
 $b^{[l]} \leftarrow b^{[l]} - \eta \cdot \partial L/\partial b^{[l]}$
 
 ---
